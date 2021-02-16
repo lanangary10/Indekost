@@ -1,5 +1,5 @@
 <?php
-require_once '../vendor/autoload.php';
+
 
 use EasyRdf\RdfNamespace;
 use EasyRdf\Sparql\Client;
