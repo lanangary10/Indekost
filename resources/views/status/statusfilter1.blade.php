@@ -8,7 +8,7 @@ RdfNamespace::set('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#');
 RdfNamespace::set('rdfs', 'http://www.w3.org/2000/01/rdf-schema#');
 RdfNamespace::set('owl', 'http://www.w3.org/2002/07/owl#');
 RdfNamespace::set('indekost', 'http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#');
-$sparql = new Client('http://127.0.0.1:3030/Ontolgyindekost/query');
+$sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekost/query');
 
 $status = $sparql->query("SELECT * WHERE {?s rdf:type indekost:Status}");
 
