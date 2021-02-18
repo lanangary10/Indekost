@@ -325,10 +325,19 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
         </div>
         <?php } ?>
         </div>
+        <?php 
+        if (isset($_GET['cari'])){
+          
+        
+        ?>
         <div class="col">
         <div class="alert alert-info alert-dismissable">
         <p style="font-size: 20px;"><b>QUERY</b></p>
-        <?php echo $querydata; ?>
+        <?php 
+       echo $querydata;
+        }
+        ?>
+      
         </div>
         </div>
         <!-- /.row -->
