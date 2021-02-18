@@ -53,6 +53,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-light-primary elevation-4" style="background-color: #ffd56b;">
     <!-- Brand Logo -->
+    
     <div class="container">
         <a href="{{ url ('browsing') }}" class="brand-link">
         <i class="nav-icon fas fa-home"></i>
@@ -133,6 +134,7 @@
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
+      
     </div>
     <!-- /.sidebar -->
   </aside>

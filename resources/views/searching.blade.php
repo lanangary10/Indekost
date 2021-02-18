@@ -43,6 +43,9 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
 
             <!-- small box -->
             <form action="" method="GET">
+            <!-- Lokasi -->
+            <div class="row">
+            <div class="col-6">
             <div class="text-nowrap font-weight-bold" style="width: 8rem;">lokasi Indekost</div>
                 <div class="input-group mb-3">
                     <select class="custom-select" id="lokasi" name="lokasi">
@@ -59,10 +62,55 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
                        <?php }?>
                   </select>
               </div>
-
+              </div>
+              <!-- end lokasi -->
               
              
-             <!-- yang baru di edit -->
+
+              <!-- Fasilitas Primer-->
+             <div class="col">
+              <div class="form-check form-check-inline">
+                <div class="input-group mb-3">
+
+               
+                       <?php
+                    
+                       $qrfasilitasprimer = "SELECT * WHERE {?fasilitasprimer rdf:type indekost:Primer}";
+                       $fasilitasprimer = $sparql->query($qrfasilitasprimer);
+                       $fhitprimer=0;
+                       $fnumberprimer=[];
+                       $cekminusfasilitasprimer=[];
+
+                       foreach($fasilitasprimer as $f){
+                           $listfasilitasprimer = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$f->fasilitasprimer->getUri());
+                          $fnumberprimer[$fhitprimer]=0;
+                          $fhitprimer++;
+                          $cekminusfasilitasprimer[$listfasilitasprimer]['status']=false;
+
+                         
+                           ?> 
+                    
+                          
+                           <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="fasilitasprimer[]" type="checkbox" id="fasilitasprimer" value="<?php echo $listfasilitasprimer?>">
+                            <label class="form-check-label" for="inlineCheckbox1"><?php echo $listfasilitasprimer ?></label>
+                          </div>
+                       
+                       <?php }   ?>
+
+                </div>
+              </div>
+              </div>
+              <!-- end fasilitasprimer-->
+
+
+
+
+
+             <!-- Fasilitas sekunder-->
+             <div class="col">
+            
+              
               <div class="form-check form-check-inline">
                 <div class="input-group mb-3">
 
@@ -74,39 +122,32 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
                        $fhit=0;
                        $fnumber=[];
                        $cekminusfasilitas=[];
-
+                      
+                       
                        foreach($fasilitas as $f){
-                           $listfasilitas = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$f->fasilitas->getUri());
+                          $listfasilitas = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$f->fasilitas->getUri());
                           $fnumber[$fhit]=0;
                           $fhit++;
                           $cekminusfasilitas[$listfasilitas]['status']=false;
 
                          
                            ?> 
-                           
-                           
-                           
+                    
+                          
                            <div class="form-check form-check-inline">
                             <input class="form-check-input" name="fasilitas[]" type="checkbox" id="fasilitas" value="<?php echo $listfasilitas?>">
                             <label class="form-check-label" for="inlineCheckbox1"><?php echo $listfasilitas ?></label>
                           </div>
-
-                           <!-- <input type="checkbox" name="fasilitas[]" id="fasilitas" value="<?php echo $listfasilitas?>">
-                           <label class="form-check-label" for="inlineCheckbox1"><?php echo $listfasilitas ?></label>  -->
-                            
-                         
-                           
-           
-
                        
                        <?php }   ?>
 
-                 
                 </div>
               </div>
-              <!-- akhir yang baru di edit -->
+              </div>
+              <!-- end fasilitas-->
              
              <!-- status -->
+             <div class="col-6">
               <div class="input-group mb-3">
                     <select class="custom-select" id="status" name="status">
                       <option value="kosong">Indekost Khusus...</option>
@@ -122,10 +163,15 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
                        <?php }?>
                   </select>
               </div>
+              </div>
+              <!-- end status -->
 
-            
+           
+            <div class="col"></div>
             <input type="submit" name="cari" value="Cari" class="btn btn-primary">
             <input type="submit" name="reset" value="Reset" class="btn btn-danger" onclick="resetPage()">
+            </div>
+          
         </form>
 
    
@@ -150,6 +196,38 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
             
           } 
 
+
+           // Fasilitas primer
+           if (isset($_GET['fasilitasprimer'])) {
+            $hasilFasilitasprimer = $_GET['fasilitasprimer'];   
+            
+  
+            foreach($hasilFasilitasprimer as $item){
+              $querydata = $querydata.". ?indekost indekost:Memiliki indekost:".$item."";
+          }
+  
+          
+           $cekFasilitasTidakTerpilihprimer = array("Kamar_mandi_dalam" => "Kamar_mandi_dalam", "Dapur_pribadi" => "Dapur_pribadi", "Tempat_tidur" => "Tempat_tidur");
+          foreach($hasilFasilitasprimer as $item){
+              unset($cekFasilitasTidakTerpilihprimer[$item]);
+          }
+  
+          foreach($cekFasilitasTidakTerpilihprimer as $item){
+            $querydata = $querydata.". MINUS {?indekost indekost:Memiliki indekost:".$item."}";
+          }
+  
+   
+             }
+            //  else {
+            //   $cekFasilitasTidakTerpilihprimer = array("Kamar_mandi_dalam" => "Kamar_mandi_dalam", "Dapur_pribadi" => "Dapur_pribadi", "Tempat_tidur" => "Tempat_tidur");
+            //   foreach($cekFasilitasTidakTerpilihprimer as $item){
+            //     $querydata = $querydata.". MINUS {?indekost indekost:Memiliki indekost:".$item."}";
+            // }
+             
+            //  }
+            //  end fasilitas primer
+
+          // Fasilitas Sekunder
           if (isset($_GET['fasilitas'])) {
           $hasilFasilitas = $_GET['fasilitas'];   
 
@@ -157,19 +235,6 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
           foreach($hasilFasilitas as $item){
             $querydata = $querydata.". ?indekost indekost:Tersedia indekost:".$item."";
         }
-
-
-          // 
-
-            // if ($item=='Ac' && $cekminusfasilitas[$item]['status']!=true) {
-            //   $querydata = $querydata.".MINUS {?indekost indekost:Tersedia indekost:Ac}";
-            // }
-            // if ($item=='Ac' && $cekminusfasilitas[$item]['status']!=true) {
-            //   $querydata = $querydata.".MINUS {?indekost indekost:Tersedia indekost:Almari}";
-            // } 
-            
-         
-
 
 
          $cekFasilitasTidakTerpilih = array("Ac" => "Ac", "Almari" => "Almari", "Cleaning_service" => "Cleaning_service", "Meja" =>  "Meja", "Laundry" => "Laundry", "Wifi" => "Wifi");
@@ -182,7 +247,14 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
         }
 
  
-           }
+       }
+    //    else {
+    //     $cekFasilitasTidakTerpilih = array("Ac" => "Ac", "Almari" => "Almari", "Cleaning_service" => "Cleaning_service", "Meja" =>  "Meja", "Laundry" => "Laundry", "Wifi" => "Wifi");
+    //     foreach($cekFasilitasTidakTerpilih as $item){
+    //       $querydata = $querydata.". MINUS {?indekost indekost:Tersedia indekost:".$item."}";
+    //   }
+    // }
+          //  end fasilitas sekunder
             
            $querydata = $querydata."}";
            $query=$sparql->query($querydata);
@@ -207,6 +279,8 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
          
         ?>
 
+<!-- TAMPILAN HASIL SEARCHING -->
+<div class="col">
 <div class="container-fluid">
           <div class="text-nowrap font-weight-bold mt-3"><h2>Hasil</h2></div>
           <table class="table mt-3">
@@ -250,7 +324,13 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
           </table>
         </div>
         <?php } ?>
-        
+        </div>
+        <div class="col">
+        <div class="alert alert-info alert-dismissable">
+        <p style="font-size: 20px;"><b>QUERY</b></p>
+        <?php echo $querydata; ?>
+        </div>
+        </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
