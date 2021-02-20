@@ -18,7 +18,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
 ?>
 @extends('layout/main')
 
-@section('title', 'Nama Indekost')
+@section('title', 'Konten Lokasi Indekost')
 
 @section('container')
 
@@ -41,19 +41,12 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
         
         <?php
         $i=0;
-
-     
-        if($idfilter1=='primer'){
-          $filterprimer = "SELECT * WHERE { ?s indekost:Memiliki indekost:Kamar_mandi_dalam. ?s indekost:Foto ?o. ?s indekost:Harga ?p. ?s indekost:Foto ?o. ?s indekost:Alamat ?q. MINUS {?s indekost:Tersedia indekost:Ac} }"; // MINUS {?s indekost:Tersedia indekost:Ac}
-          $qrfilter = $sparql->query($filterprimer);
-        }else{
-          $filtersekunder = "SELECT * WHERE { ?s indekost:Tersedia indekost:Ac.?s indekost:Foto ?o. ?s indekost:Harga ?p. ?s indekost:Alamat ?q}";
-          $qrfilter = $sparql->query($filtersekunder);
-        }
-
             
+            $filterlokasi = "SELECT * WHERE { ?s indekost:Berlokasi indekost:".$idlokasi.". ?s indekost:Foto ?o. ?s indekost:Harga ?p. ?s indekost:Alamat ?q}";
+            $qrfilter = $sparql->query($filterlokasi);
+
             foreach($qrfilter as $item){
-            $tampilfilterprimer = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->s->getUri());
+            $idtampillokasi = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->s->getUri());
             $queryfoto = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->o->getValue());
             $querytampilharga = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->p->getValue());
             $querytampilalamat = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->q->getValue());
@@ -61,8 +54,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
         ?>
        
 
-        
-     
+      
         <td>
         <div class="col-lg-3 col-6">
          <div class="card" style="width: 18rem;">
@@ -70,7 +62,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
            <img src="{{ URL::asset('images/'.$queryfoto) }}" class="card-img-top" alt="..." width="150px" height="200px">
            
              <div class="card-body">
-                <h5 class="card-title"><?php echo $tampilfilterprimer ?></h5>       
+                <h5 class="card-title"><?php echo $idtampillokasi ?></h5>       
             </div>
 
             <ul class="list-group list-group-flush">
@@ -80,7 +72,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
             </ul>
 
             <div class="card-body">
-                 <a href="{{ route ('detaillokasi.show',[$tampilfilterprimer]) }}" class="card-link">Detail Indekost--> </a>
+                 <a href="{{ route ('detaillokasi.show',[$idtampillokasi]) }}" class="card-link">Detail Indekost--> </a>
             </div>
             
          </div>

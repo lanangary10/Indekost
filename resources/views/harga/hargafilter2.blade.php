@@ -32,49 +32,66 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
   <div class="row">
     <div class="col-sm">
     <section class="content">
-    <table class="table table-hover">
+    <table class="table">
         
-        <tr>
+        
         
         <?php
-        $i="0";
+        $i=0;
 
      
         
-          $filterrentang = "SELECT * WHERE { ?s rdf:type indekost:Nama_indekost. ?s indekost:Rentang ".$idfilterharga."}";
-          $qrfilter = $sparql->query($filterrentang);
-          
-  
+            $filterrentang = "SELECT * WHERE { ?s rdf:type indekost:Nama_indekost. ?s indekost:Rentang ".$idfilterharga.". ?s indekost:Foto ?o. ?s indekost:Harga ?p. ?s indekost:Alamat ?q}";
+           
+            $qrfilter = $sparql->query($filterrentang);
+
             foreach($qrfilter as $item){
             $tampilfilterrentang = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->s->getUri());
+            $queryfoto = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->o->getValue());
+            $querytampilharga = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->p->getValue());
+            $querytampilalamat = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->q->getValue());
 
         ?>
        
 
         
      
-            <td>
-              <a href="indekost/{{$tampilfilterrentang}}">
-              <div class="card" style="width: 18rem;">
-                  <div class="card-body">
-                      <h5 class="card-title"><?php echo $tampilfilterrentang ?></h5>
-                  </div>
-              </div>
-              </a>
-              </td>
-       
+        <td>
+        <div class="col-lg-3 col-6">
+         <div class="card" style="width: 18rem;">
+
+           <img src="{{ URL::asset('images/'.$queryfoto) }}" class="card-img-top" alt="..." width="150px" height="200px">
+           
+             <div class="card-body">
+                <h5 class="card-title"><?php echo $tampilfilterrentang?></h5>       
+            </div>
+
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Harga : Rp <?php echo $querytampilharga ?> </li>
+              <!-- yang buat kata jadi .... span text-truncate -->
+              <li class="list-group-item"> <span class="d-inline-block text-truncate" style="max-width: 250px;"><?php echo $querytampilalamat ?> </span> </li>
+            </ul>
+
+            <div class="card-body">
+                 <a href="{{ route ('detaillokasi.show',[$tampilfilterrentang]) }}" class="card-link">Detail Indekost--> </a>
+            </div>
+            
+         </div>
+         </div>
+         </td>
 
         <?php
-        $i= $i+1;
-        if ($i%2==0)
+        $i++;
+        if ($i%4==0)
         {
-          ?> <tr></tr>  <?php
+          ?> 
+          <tr></tr> 
+           <?php
         }
-        
-        }
+                }
         ?>
 
-</tr>
+
 
 </table>
     </section>

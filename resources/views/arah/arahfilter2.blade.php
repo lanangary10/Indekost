@@ -57,17 +57,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
         ?>
        
 
-        
-     
-            <!-- <td>
-              <a href="indekost/{{$tampilfilterarah}}">
-              <div class="card" style="width: 18rem;">
-                  <div class="card-body">
-                      <h5 class="card-title"><?php echo $tampilfilterarah ?></h5>
-                  </div>
-              </div>
-              </a>
-              </td> -->
+      
         <td>
         <div class="col-lg-3 col-6">
          <div class="card" style="width: 18rem;">
@@ -85,7 +75,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
             </ul>
 
             <div class="card-body">
-                 <a href="indekost/{{$tampilfilterarah}}" class="card-link">Detail Indekost--> </a>
+                 <a href="{{ route ('detaillokasi.show',[$tampilfilterarah]) }}" class="card-link">Detail Indekost--> </a>
             </div>
             
          </div>

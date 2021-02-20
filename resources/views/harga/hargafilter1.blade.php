@@ -34,7 +34,7 @@
               $idfilterharga = "1";
               ?>
                
-              <a href=harga/{{$idfilterharga}} class="small-box-footer"> Rentang 1 <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route ('harga.filter',[$idfilterharga]) }}" class="small-box-footer"> Rentang 1 <i class="fas fa-arrow-circle-right"></i></a>
             
             </div>
           </div>
@@ -54,7 +54,7 @@
               $idfilterharga = "2";
               ?>
                
-              <a href=harga/{{$idfilterharga}} class="small-box-footer"> Rentang 2<i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route ('harga.filter',[$idfilterharga]) }}" class="small-box-footer"> Rentang 2<i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -72,7 +72,7 @@
               <?php 
               $idfilterharga = "3";
               ?>
-              <a href="harga/{{$idfilterharga}}" class="small-box-footer">Rentang 3<i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route ('harga.filter',[$idfilterharga]) }}" class="small-box-footer">Rentang 3<i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
         </div>

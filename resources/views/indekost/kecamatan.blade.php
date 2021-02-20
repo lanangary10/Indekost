@@ -16,7 +16,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
 ?>
 @extends('layout/main')
 
-@section('title', 'kECAMATAN')
+@section('title', 'KECAMATAN')
 
 @section('container')
 
@@ -80,7 +80,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
                     <div class="icon">
                         <i class="ion ion-ios-home"></i>
                     </div>
-                      <a href="detail/{{$caridetailkost}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      <a href="{{ route ('pilih.indekost',[$caridetailkost]) }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                   </div>
               </div>
             </div>

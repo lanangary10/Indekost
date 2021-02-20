@@ -51,18 +51,7 @@ $arah = $sparql->query("SELECT * WHERE {?s rdf:type indekost:Arah}");
           
        
 
-        <!-- <td>
-        
-          <a href="kecamatan/{{$cariarah}}">
-          
-          <div class="card text-end" style="width: 19rem;">
-              <div class="card-body">
-                  <h5 class="card-title"><?php echo $cariarah ?></h5>
-              </div>
-          </div>
-          
-          </a>
-        </td> -->
+       
   
   <!-- Nampilin BOX dan isinya -->
   <td>
@@ -106,7 +95,7 @@ $arah = $sparql->query("SELECT * WHERE {?s rdf:type indekost:Arah}");
             <div class="icon">
                 <i class="ion ion-ios-home"></i>
             </div>
-              <a href="arah/{{$cariarah}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route ('arah.tampil',[$cariarah]) }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
        </div>
     </div>

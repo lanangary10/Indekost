@@ -34,7 +34,7 @@
               $idfilter1 = "primer";
               ?>
                
-              <a href=fasilitas/{{$idfilter1}} class="small-box-footer"> primer <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route ('fasilitas.filter',[$idfilter1]) }}" class="small-box-footer"> primer <i class="fas fa-arrow-circle-right"></i></a>
             
             </div>
           </div>
@@ -54,7 +54,7 @@
               $idfilter1 = "sekunder";
               ?>
                
-              <a href=fasilitas/{{$idfilter1}} class="small-box-footer"> primer <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route ('fasilitas.filter',[$idfilter1]) }}" class="small-box-footer"> primer <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

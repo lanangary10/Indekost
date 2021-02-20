@@ -32,7 +32,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
 
 
 
-  <div class="row">
+  <div class="row"> 
     <div class="col-sm">
     <section class="content">
     <table class="table">
@@ -85,7 +85,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
             </ul>
 
             <div class="card-body">
-                 <a href="indekost/{{$tampilfilterstatus}}" class="card-link">Detail Indekost--> </a>
+                 <a href="{{ route ('detaillokasi.show',[$tampilfilterstatus]) }}" class="card-link">Detail Indekost--> </a>
             </div>
             
          </div>

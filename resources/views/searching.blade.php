@@ -206,15 +206,15 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
               $querydata = $querydata.". ?indekost indekost:Memiliki indekost:".$item."";
           }
   
-          
-           $cekFasilitasTidakTerpilihprimer = array("Kamar_mandi_dalam" => "Kamar_mandi_dalam", "Dapur_pribadi" => "Dapur_pribadi", "Tempat_tidur" => "Tempat_tidur");
-          foreach($hasilFasilitasprimer as $item){
-              unset($cekFasilitasTidakTerpilihprimer[$item]);
-          }
+          // Spesifik
+          //  $cekFasilitasTidakTerpilihprimer = array("Kamar_mandi_dalam" => "Kamar_mandi_dalam", "Dapur_pribadi" => "Dapur_pribadi", "Tempat_tidur" => "Tempat_tidur");
+          // foreach($hasilFasilitasprimer as $item){
+          //     unset($cekFasilitasTidakTerpilihprimer[$item]);
+          // }
   
-          foreach($cekFasilitasTidakTerpilihprimer as $item){
-            $querydata = $querydata.". MINUS {?indekost indekost:Memiliki indekost:".$item."}";
-          }
+          // foreach($cekFasilitasTidakTerpilihprimer as $item){
+          //   $querydata = $querydata.". MINUS {?indekost indekost:Memiliki indekost:".$item."}";
+          // }
   
    
              }
@@ -236,15 +236,15 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
             $querydata = $querydata.". ?indekost indekost:Tersedia indekost:".$item."";
         }
 
+        // Spesifik
+        //  $cekFasilitasTidakTerpilih = array("Ac" => "Ac", "Almari" => "Almari", "Cleaning_service" => "Cleaning_service", "Meja" =>  "Meja", "Laundry" => "Laundry", "Wifi" => "Wifi");
+        // foreach($hasilFasilitas as $item){
+        //     unset($cekFasilitasTidakTerpilih[$item]);
+        // }
 
-         $cekFasilitasTidakTerpilih = array("Ac" => "Ac", "Almari" => "Almari", "Cleaning_service" => "Cleaning_service", "Meja" =>  "Meja", "Laundry" => "Laundry", "Wifi" => "Wifi");
-        foreach($hasilFasilitas as $item){
-            unset($cekFasilitasTidakTerpilih[$item]);
-        }
-
-        foreach($cekFasilitasTidakTerpilih as $item){
-          $querydata = $querydata.". MINUS {?indekost indekost:Tersedia indekost:".$item."}";
-        }
+        // foreach($cekFasilitasTidakTerpilih as $item){
+        //   $querydata = $querydata.". MINUS {?indekost indekost:Tersedia indekost:".$item."}";
+        // }
 
  
        }
@@ -302,14 +302,14 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
               ?>
               <tr>
                 <th scope="row">{{ $iteration }}</th>
-                <td><a href="search/{{$id}}" class="text-decoration-none text-muted"><?php echo $arrayuri[$indekost - 1]; ?></a></td>
+                <td><a href="{{ route ('detaillokasi.show',[$id]) }}" class="text-decoration-none text-muted"><?php echo $arrayuri[$indekost - 1]; ?></a></td>
               </tr>
               <?php
                     }
                   } else { $iteration = $iteration + 1; $id = $arrayuri[$indekost - 1]; ?>
               <tr>
                 <th scope="row">{{ $iteration }}</th>
-                <td><a href="search/{{$id}}" class="text-decoration-none text-muted"><?php echo $arrayuri[$indekost - 1]; ?></a></td>
+                <td><a href="{{ route ('detaillokasi.show',[$id]) }}" class="text-decoration-none text-muted"><?php echo $arrayuri[$indekost - 1]; ?></a></td>
               </tr>
               <?php
                   }

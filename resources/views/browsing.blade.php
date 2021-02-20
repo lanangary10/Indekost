@@ -25,13 +25,14 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
+              <?php $lokasi='lokasi'; ?>
                 <h3>Lokasi</h3>
                 <p>9 Kabupaten</p>
               </div>
               <div class="icon">
               <iconify-icon data-icon="dashicons:location"></iconify-icon>
               </div>
-              <a href="{{ url ('/kabupaten') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route ('lokasi.kabupaten',[$lokasi]) }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -95,7 +96,7 @@
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box " style="background-color: #ffda77;">
-
+               <?php $direction='arah'; ?>
               <div class="inner">
                 <h3>Arah</h3>
                 <p>Arah hadap indeKost</p>
@@ -105,7 +106,7 @@
                 <iconify-icon data-icon="fa-solid:money-bill-wave"></iconify-icon>
               </div>
 
-              <a href="{{ url ('/filterarah') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route ('arah.index',[$direction]) }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               
             </div>
           </div>

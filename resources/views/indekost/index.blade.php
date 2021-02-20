@@ -88,7 +88,7 @@ $lokasi = $sparql->query("SELECT * WHERE {?s rdf:type indekost:Kabupaten}");
             <div class="icon">
                 <i class="ion ion-ios-home"></i>
             </div>
-              <a href="kecamatan/{{$carikecamatan}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route ('lokasi.kecamatan',[$carikecamatan]) }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
        </div>
     </div>

@@ -55,7 +55,7 @@
     <!-- Brand Logo -->
     
     <div class="container">
-        <a href="{{ url ('browsing') }}" class="brand-link">
+        <a href="{{ url ('/') }}" class="brand-link">
         <i class="nav-icon fas fa-home"></i>
         <span class="brand-text font-weight-light">Indekost</span>
         </a>

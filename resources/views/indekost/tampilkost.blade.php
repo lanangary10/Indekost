@@ -65,7 +65,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
             </ul>
 
             <div class="card-body">
-              <a href="konten/{{$querydetail}}" class="card-link">Another link</a>
+              <a href="{{ route ('detaillokasi.show',[$querydetail]) }}" class="card-link">Another link</a>
             </div>
             
          </div>
