@@ -30,7 +30,7 @@
                 <p>9 Kabupaten</p>
               </div>
               <div class="icon">
-              <iconify-icon data-icon="dashicons:location"></iconify-icon>
+              <i class="far fa-map"></i>
               </div>
               <a href="{{ route ('lokasi.kabupaten',[$lokasi]) }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -45,7 +45,7 @@
                 <p>Primer-Sekunder</p>
               </div>
               <div class="icon">
-                <iconify-icon data-icon="ant-design:wifi-outlined"></iconify-icon>
+                <i class="fas fa-bed"></i>
               </div>
               <a href="{{ url ('/filterkebutuhan') }}" class="small-box-footer">Browsing Fasilitas <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -63,7 +63,8 @@
               </div>
 
               <div class="icon">
-                <iconify-icon data-icon="fa-solid:money-bill-wave"></iconify-icon>
+                <!-- <iconify-icon data-icon="fa-solid:money-bill-wave"></iconify-icon> -->
+                <i class="fas fa-hand-holding-usd"></i>
               </div>
 
               <a href="{{ url ('/filterharga') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
@@ -83,7 +84,8 @@
               </div>
 
               <div class="icon">
-                <iconify-icon data-icon="fa-solid:money-bill-wave"></iconify-icon>
+                <!-- <iconify-icon data-icon="fa-solid:money-bill-wave"></iconify-icon> -->
+                <i class="fas fa-users"></i>
               </div>
 
               <a href="{{ url ('/filterstatus') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
@@ -103,7 +105,7 @@
               </div>
 
               <div class="icon">
-                <iconify-icon data-icon="fa-solid:money-bill-wave"></iconify-icon>
+              <i class="far fa-compass"></i>
               </div>
 
               <a href="{{ route ('arah.index',[$direction]) }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>

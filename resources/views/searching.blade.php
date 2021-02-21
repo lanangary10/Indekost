@@ -43,6 +43,8 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
 
             <!-- small box -->
             <form action="" method="GET">
+            
+            <div class="row">  <!-- row1 -->
             <!-- Lokasi -->
             <div class="row">
             <div class="col-6">
@@ -65,10 +67,79 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
               </div>
               <!-- end lokasi -->
               
-             
+               <!-- Menghadap -->
+              <div class="col-6">
+              <div class="text-nowrap font-weight-bold" style="width: 8rem;">Menghadap Arah </div>
+              <div class="input-group mb-3">
+                    <select class="custom-select" id="arah" name="arah">
+                      <option value="kosong">Indekost menghadap...</option>
+                       <?php
+                   
+                       $qrarah = "SELECT * WHERE {?hdp rdf:type indekost:Arah}";
+                       $hdp = $sparql->query($qrarah);
 
-              <!-- Fasilitas Primer-->
-             <div class="col">
+                       foreach($hdp as $st){
+                           $namaarah = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$st->hdp->getUri());
+                       ?>
+                       <option value="<?php echo $namaarah ?>">{{ $namaarah }}</option>
+                       <?php }?>
+                  </select>
+              </div>
+              </div>
+              <!-- end menghadap -->
+              </div>  <!-- end row1 -->
+
+
+              <div class="row"> <!-- row 3 -->
+             <!-- status -->
+             <div class="col-6">
+              <div class="input-group mb-3">
+                    <select class="custom-select" id="status" name="status">
+                      <option value="kosong">Indekost Khusus...</option>
+                       <?php
+                   
+                       $qrstatus = "SELECT * WHERE {?stat rdf:type indekost:Status}";
+                       $stat = $sparql->query($qrstatus);
+
+                       foreach($stat as $st){
+                           $namastatus = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$st->stat->getUri());
+                       ?>
+                       <option value="<?php echo $namastatus ?>">{{ $namastatus }}</option>
+                       <?php }?>
+                  </select>
+              </div>
+              </div>
+              <!-- end status -->
+
+               <!-- Rentang -->
+             <div class="col-6">
+              <div class="input-group mb-3">
+                    <select class="custom-select" id="rentang" name="rentang">
+                      <option value="kosong">Rentang</option>
+                       <?php
+                   
+                       $qrrentang = "SELECT DISTINCT ?rentang  WHERE { ?kost indekost:Rentang ?rentang . FILTER (?rentang in (1,2,3))}";
+                       $rtg = $sparql->query($qrrentang);
+
+                       foreach($rtg as $st){
+                           $namarentang = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$st->rentang->getValue());
+                       ?>
+                       <option value="<?php echo $namarentang ?>">{{ $namarentang }}</option>
+                       <?php }?>
+                  </select>
+              </div>
+              </div>
+              <!-- end Rentang -->
+              </div> <!-- end row3 -->
+
+
+
+
+
+            <div class="row"><!-- row2 -->
+            <!-- Fasilitas Primer-->
+             <div class="col-3">
+             <div class="text-nowrap font-weight-bold" style="width: 8rem;">Fasilitas Primer</div>
               <div class="form-check form-check-inline">
                 <div class="input-group mb-3">
 
@@ -108,9 +179,9 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
 
 
              <!-- Fasilitas sekunder-->
-             <div class="col">
+             <div class="col-3">
             
-              
+             <div class="text-nowrap font-weight-bold" style="width: 8rem;">Fasilitas Sekunder</div>
               <div class="form-check form-check-inline">
                 <div class="input-group mb-3">
 
@@ -144,32 +215,20 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
                 </div>
               </div>
               </div>
-              <!-- end fasilitas-->
-             
-             <!-- status -->
-             <div class="col-6">
-              <div class="input-group mb-3">
-                    <select class="custom-select" id="status" name="status">
-                      <option value="kosong">Indekost Khusus...</option>
-                       <?php
-                   
-                       $qrstatus = "SELECT * WHERE {?stat rdf:type indekost:Status}";
-                       $stat = $sparql->query($qrstatus);
+              <!-- end fasilitas sekunder-->
+              </div>  <!-- end row2-->
+            
 
-                       foreach($stat as $st){
-                           $namastatus = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$st->stat->getUri());
-                       ?>
-                       <option value="<?php echo $namastatus ?>">{{ $namastatus }}</option>
-                       <?php }?>
-                  </select>
-              </div>
-              </div>
-              <!-- end status -->
+            
+
+        
 
            
-            <div class="col"></div>
+            <div class="col">
             <input type="submit" name="cari" value="Cari" class="btn btn-primary">
             <input type="submit" name="reset" value="Reset" class="btn btn-danger" onclick="resetPage()">
+            </div>
+
             </div>
           
         </form>
@@ -183,6 +242,8 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
           
           $hasillokasi = $_GET['lokasi'];
           $hasilstatus = $_GET['status'];
+          $hasilarah = $_GET['arah'];
+          $hasirentang = $_GET['rentang'];
          
 
           $querydata = 'SELECT * WHERE { ?indekost rdf:type indekost:Nama_indekost';
@@ -195,6 +256,15 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
             $querydata=$querydata.". ?indekost indekost:Khusus indekost:".$_GET['status'];
             
           } 
+          if ($_GET['arah']!="kosong") {
+            $querydata=$querydata.". ?indekost indekost:Menghadap indekost:".$_GET['arah'];
+            
+          } 
+          if ($_GET['rentang']!="kosong") {
+            $querydata=$querydata.". ?indekost indekost:Rentang ".$_GET['rentang'];
+            
+          } 
+        
 
 
            // Fasilitas primer

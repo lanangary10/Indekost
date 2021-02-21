@@ -51,7 +51,8 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-light-primary elevation-4" style="background-color: #ffd56b;">
+  <aside class="main-sidebar sidebar-light-primary elevation-4" style="background-color: #FF8A80;" >
+  <!-- style="background-image: url('https://ecs7.tokopedia.net/img/cache/700/VqbcmM/2020/9/1/e176b0fa-e8a3-4fc3-8af9-a830e55a3944.jpg');background-blend-mode: soft-light;background-color: rgba(0,0,0,.25);background-size: cover;" -->
     <!-- Brand Logo -->
     
     <div class="container">
@@ -77,7 +78,7 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              <li class="nav-item text-white">
                 <a href="{{ url ('/kabupaten') }}" class="nav-link">
                   <i class="far fa-map nav-icon"></i>
                   <p>Lokasi</p>
@@ -85,14 +86,14 @@
               </li>
               <li class="nav-item">
                 <a href="{{ url ('/filterarah') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-compass nav-icon"></i>
                   <p>arah</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Lantai</p>
+                <a href="{{ url ('/filterharga') }}" class="nav-link">
+                  <i class="fas fa-hand-holding-usd nav-icon"></i>
+                  <p>Rentang Harga</p>
                 </a>
               </li>
               <li class="nav-item">
