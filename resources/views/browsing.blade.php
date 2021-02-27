@@ -21,9 +21,10 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
+        
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-info">
+            <div style="background-color: #E0E0E0;" class="small-box">
               <div class="inner">
               <?php $lokasi='lokasi'; ?>
                 <h3>Lokasi</h3>
@@ -38,7 +39,7 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div style="background-color: #E0E0E0;" class="small-box">
               <div class="inner">
                 <h3>Fasiltias<sup style="font-size: 20px"></sup></h3>
 
@@ -55,7 +56,7 @@
           <!-- Harga -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box " style="background-color: #ffda77;">
+            <div class="small-box " style="background-color: #E0E0E0;">
 
               <div class="inner">
                 <h3>Harga</h3>
@@ -76,7 +77,7 @@
         <!-- Status -->
         <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box " style="background-color: #ffda77;">
+            <div class="small-box " style="background-color: #E0E0E0;" data-bs-toggle="tooltip" data-bs-placement="top" title="Status Indekost">
 
               <div class="inner">
                 <h3>Status</h3>
@@ -84,7 +85,6 @@
               </div>
 
               <div class="icon">
-                <!-- <iconify-icon data-icon="fa-solid:money-bill-wave"></iconify-icon> -->
                 <i class="fas fa-users"></i>
               </div>
 
@@ -94,15 +94,20 @@
           </div>
         <!-- ./col -->
 
+
         <!-- Arah -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box " style="background-color: #ffda77;">
+            
+
+            <div class="small-box " style="background-color: #E0E0E0;" data-bs-toggle="tooltip" data-bs-placement="top" title="Arah Hadap Indekost">
                <?php $direction='arah'; ?>
               <div class="inner">
                 <h3>Arah</h3>
                 <p>Arah hadap indeKost</p>
               </div>
+
+              
 
               <div class="icon">
               <i class="far fa-compass"></i>

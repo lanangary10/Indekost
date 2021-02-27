@@ -29,6 +29,8 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -38,20 +40,20 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        <a class="nav-link link-dark" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ url ('/browsing') }}" class="nav-link">Browsing</a>
+        <a href="{{ url ('/browsing') }}" class="nav-link link-dark">Browsing</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ url ('/searching') }}" class="nav-link">Searching</a>
+        <a href="{{ url ('/searching') }}" class="nav-link link-dark">Searching</a>
       </li>
     </ul>
   </nav>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-light-primary elevation-4" style="background-color: #FF8A80;" >
+  <aside class="main-sidebar sidebar-light-primary elevation-4" style="background-color: #D7CCC8;" >
   <!-- style="background-image: url('https://ecs7.tokopedia.net/img/cache/700/VqbcmM/2020/9/1/e176b0fa-e8a3-4fc3-8af9-a830e55a3944.jpg');background-blend-mode: soft-light;background-color: rgba(0,0,0,.25);background-size: cover;" -->
     <!-- Brand Logo -->
     
@@ -97,27 +99,22 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Kriteria 4</p>
+                <a href="{{ url ('/filterkebutuhan') }}" class="nav-link">
+                   <i class="fas fa-bed"></i>
+                  <p>Fasilitas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Kriteria 5</p>
+                <a href="{{ url ('/filterstatus') }}" class="nav-link">
+                  <i class="fas fa-users"></i>
+                  <p>Status</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Kriteria 6</p>
-                </a>
-              </li>
+              
             </ul>
           </li>
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link">
+            <a href="{{ url ('/browsing') }}" class="nav-link">
               <i class="nav-icon fas fa-globe"></i>
               <p>
                 Browsing
@@ -125,7 +122,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link">
+            <a href="{{ url ('/searching') }}" class="nav-link">
               <i class="nav-icon fas fa-search-plus"></i>
               <p>
                 Searching

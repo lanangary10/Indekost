@@ -39,30 +39,18 @@ $lokasi = $sparql->query("SELECT * WHERE {?s rdf:type indekost:Kabupaten}");
 
               $bd=$i;
               if ($bd % 4 ==0) {
-                $bd="#ff7b54";
+                $bd="#EEEEEE";
               }elseif ($bd % 4 ==1) {
-                $bd="#cdfffc";
+                $bd="#E0E0E0";
               }elseif ($bd % 4 ==2) {
-                $bd="#fde8cd";
+                $bd="#BDBDBD";
               }elseif ($bd % 4 ==3) {
-              $bd="#ff4646";
+              $bd="#9E9E9E";
             }
           ?>
           
        
 
-        <!-- <td>
-        
-          <a href="kecamatan/{{$carikecamatan}}">
-          
-          <div class="card text-end" style="width: 19rem;">
-              <div class="card-body">
-                  <h5 class="card-title"><?php echo $carikecamatan ?></h5>
-              </div>
-          </div>
-          
-          </a>
-        </td> -->
   
   <!-- Nampilin BOX dan isinya -->
   <td>
@@ -86,7 +74,7 @@ $lokasi = $sparql->query("SELECT * WHERE {?s rdf:type indekost:Kabupaten}");
 
             <p class="card-text"><?php }  echo "Kecamatan : "; echo $j ?></p>
             <div class="icon">
-                <i class="ion ion-ios-home"></i>
+                 <i class="fas fa-chart-area"></i>
             </div>
               <a href="{{ route ('lokasi.kecamatan',[$carikecamatan]) }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>

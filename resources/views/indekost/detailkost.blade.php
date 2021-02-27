@@ -25,18 +25,76 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
     <div class="content-header">
       <div class="container-fluid">
         <div class="row ">
-          <div class="col-auto">
+        
+          <!-- <div class="col-auto"> -->
+          
              <div class="container">
                 <section class="content">
 
                   <!-- tampilnya  -->
-                        
+
+
+               
+
+      <!-- <div class="row">
+
+      <?php
+            $qreq = "SELECT DISTINCT * WHERE { indekost:".$iddetail2." indekost:Foto ?eq }";
+            $qrekost = $sparql->query($qreq);
+            foreach($qrekost as $item){
+              $queryfotoreq = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->eq->getValue());
+                      
+        ?>
+
+      <?php
+      }
+      ?>
+
+      <div class="col">
+      <div class="card mb-3" >
+                  
+    
+                    <div class="col-md-4">
+                      <img src="{{ URL::asset('images/'.$queryfotoreq) }}" alt="..." style="max-width: 100px;">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                      </div>
+                    </div>
+                 
+                </div>
+                </div>
+
+      <div class="col">
+                <div class="card mb-3" >
+                  
+                    <div class="col-md-4">
+                      <img src="..." alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                      </div>
+                    </div>
+                 
+                </div>
+                </div>
+
+                
+
+      </div> -->
+
        <div class="row">
 
-          <div class="col col-lg-4" >
-            <div class="card border-info" style="width: auto; height:350px;" >
-                <div class="card-header">Header</div>
-                  <div class="card-body text-info">
+          <div class="col-lg-4" >
+            <div class="card mb-3 border-info">
+                <div class="card-header text-center">Foto Indekost</div>
+                  <div class="card-body " >
                       <?php
                                 $qrdetail = "SELECT DISTINCT * WHERE { indekost:".$iddetail2." indekost:Foto ?o }";
                                 $qrkost = $sparql->query($qrdetail);
@@ -49,7 +107,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
                           }
                           ?>
                   <div class="text-center">
-                    <img src="{{ URL::asset('images/'.$queryfoto) }}" alt="..." width="220px" height="250px" class="rounded">
+                    <img src="{{ URL::asset('images/'.$queryfoto) }}" alt="{{ URL::asset('images/'.$queryfoto) }}" width="290px" height="290px" class="rounded">
                   </div>
                 </div>
             </div>
@@ -62,7 +120,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
                           <table class="table table-bordered border-info">
                             <thead>
                               <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">Properti</th>
                                 <th scope="col">{{ $iddetail2 }}</th>
                                 <th colspan="3">Harga</th>
                               </tr>
