@@ -127,7 +127,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
                             </thead>
                             <tbody>
                               <tr>
-                                  <th scope="row">Lokasi</th>
+                                  <th scope="row">Lokasii</th>
                                 <td>
                                 <?php
                               $qrdetail = "SELECT DISTINCT * WHERE { indekost:".$iddetail2." indekost:Berlokasi ?s }";
