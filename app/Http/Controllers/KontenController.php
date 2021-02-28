@@ -25,5 +25,10 @@ class KontenController extends Controller
     {
         return view('konten/kontenmenghadap', ['idhadap'=>$idhadap]);
     }
+
+    public function kontenstts($idstatus)
+    {
+        return view('konten/kontenstatus', ['idstatus'=>$idstatus]);
+    }
   
 }

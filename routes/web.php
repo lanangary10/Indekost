@@ -67,3 +67,4 @@ Route::get('lokasi/{lokasi}', 'App\Http\Controllers\KontenController@kontenlokas
 Route::get('fs/{tersedia}', 'App\Http\Controllers\KontenController@kontenfasilitass')->name('fs.show');
 Route::get('fp/{memiliki}', 'App\Http\Controllers\KontenController@kontenfasilitasp')->name('fp.show');
 Route::get('hdp/{menghadap}', 'App\Http\Controllers\KontenController@kontenmenghadap')->name('hadap.show');
+Route::get('st/{status}', 'App\Http\Controllers\KontenController@kontenstts')->name('stts.show');

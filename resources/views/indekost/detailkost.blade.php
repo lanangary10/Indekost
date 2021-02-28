@@ -292,7 +292,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
                                 
                                         ?>
 
-                                <a href="#" >{{ $khusus }}</a>
+                                <a href="{{ route ('stts.show',[$khusus]) }}" >{{ $khusus }}</a>
                                 
                               <?php
                                 }
