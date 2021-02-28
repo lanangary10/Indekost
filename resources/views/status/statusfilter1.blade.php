@@ -37,32 +37,20 @@ $status = $sparql->query("SELECT * WHERE {?s rdf:type indekost:Status}");
             foreach($status as $item){
               $caristatus = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->s->getUri());
 
-              $bd=$i;
-              if ($bd % 4 ==0) {
-                $bd="#ff7b54";
-              }elseif ($bd % 4 ==1) {
-                $bd="#cdfffc";
-              }elseif ($bd % 4 ==2) {
-                $bd="#fde8cd";
-              }elseif ($bd % 4 ==3) {
-              $bd="#ff4646";
-            }
+            //   $bd=$i;
+            //   if ($bd % 4 ==0) {
+            //     $bd="#ff7b54";
+            //   }elseif ($bd % 4 ==1) {
+            //     $bd="#cdfffc";
+            //   }elseif ($bd % 4 ==2) {
+            //     $bd="#fde8cd";
+            //   }elseif ($bd % 4 ==3) {
+            //   $bd="#ff4646";
+            // }
           ?>
           
        
 
-        <!-- <td>
-        
-          <a href="kecamatan/{{$caristatus}}">
-          
-          <div class="card text-end" style="width: 19rem;">
-              <div class="card-body">
-                  <h5 class="card-title"><?php echo $caristatus ?></h5>
-              </div>
-          </div>
-          
-          </a>
-        </td> -->
   
   <!-- Nampilin BOX dan isinya -->
   <td>
@@ -95,7 +83,29 @@ $status = $sparql->query("SELECT * WHERE {?s rdf:type indekost:Status}");
             }
         } //tutup foreach  
             ?>
-    <div class="small-box   mb-3" style="width: 18rem; background-color: <?php echo $bd ?>;" >
+
+
+ <!-- small box -->
+ <div class="small-box " style="width: 18rem; background-color: <?php echo $bd ?>;">
+              <div class="inner">
+                <h3> <?php echo $caristatus ?><sup style="font-size: 20px"></sup></h3>
+
+                <p><?php  echo "Indekost : "; echo $j ?></p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-briefcase"></i>
+              </div>
+           
+               
+              <a href="status/{{$caristatus}}" class="small-box-footer"> More info  <?php echo $caristatus ?> <i class="fas fa-arrow-circle-right"></i></a>
+       </div>
+       <!-- end small box -->
+
+
+
+
+    <!-- card box -->
+    <!-- <div class="small-box   mb-3" style="width: 18rem; background-color: <?php echo $bd ?>;" >
       <div class="card-header text-center">
         <?php echo $caristatus ?>
         </div>
@@ -108,7 +118,8 @@ $status = $sparql->query("SELECT * WHERE {?s rdf:type indekost:Status}");
             </div>
               <a href="status/{{$caristatus}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
-       </div>
+       </div> -->
+
     </div>
   </td>
 

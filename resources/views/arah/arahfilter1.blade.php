@@ -84,7 +84,27 @@ $arah = $sparql->query("SELECT * WHERE {?s rdf:type indekost:Arah}");
             }
         } //tutup foreach  
             ?>
-    <div class="small-box   mb-3" style="width: 18rem; background-color: <?php echo $bd ?>;" >
+
+
+ <!-- small box -->
+ <div class="small-box " style="width: 18rem; background-color: <?php echo $bd ?>;">
+              <div class="inner">
+                <h3> <?php echo $cariarah ?><sup style="font-size: 20px"></sup></h3>
+
+                <p><?php  echo "Indekost : "; echo $j ?></p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-briefcase"></i>
+              </div>
+           
+               
+              <a href="{{ route ('arah.tampil',[$cariarah]) }}" class="small-box-footer"> More info indekost arah  <?php echo $cariarah ?> <i class="fas fa-arrow-circle-right"></i></a>
+       </div>
+       <!-- end small box -->
+
+
+
+    <!-- <div class="small-box   mb-3" style="width: 18rem; background-color: <?php echo $bd ?>;" >
       <div class="card-header text-center">
         <?php echo $cariarah ?>
         </div>
@@ -97,7 +117,10 @@ $arah = $sparql->query("SELECT * WHERE {?s rdf:type indekost:Arah}");
             </div>
               <a href="{{ route ('arah.tampil',[$cariarah]) }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
-       </div>
+       </div> -->
+
+
+
     </div>
   </td>
 

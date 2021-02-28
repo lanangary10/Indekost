@@ -25,16 +25,17 @@
             <div class="small-box bg-info">
               <div class="inner">
                 <h3>Primer</h3>
-                <p>Lanjutkan</p>
+                <p></p>
               </div>
               <div class="icon">
-                <i class="ion ion-android-home"></i>
+              <i class="fas fa-fan"></i>
+                
               </div>
               <?php 
               $idfilter1 = "primer";
               ?>
                
-              <a href="{{ route ('fasilitas.filter',[$idfilter1]) }}" class="small-box-footer"> primer <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route ('fasilitas.filter',[$idfilter1]) }}" class="small-box-footer"> More info primer <i class="fas fa-arrow-circle-right"></i></a>
             
             </div>
           </div>
@@ -43,9 +44,9 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>Sekunder<sup style="font-size: 20px">%</sup></h3>
+                <h3>Sekunder<sup style="font-size: 20px"></sup></h3>
 
-                <p>Sekunder</p>
+                <p></p>
               </div>
               <div class="icon">
                 <i class="ion ion-briefcase"></i>
@@ -54,24 +55,11 @@
               $idfilter1 = "sekunder";
               ?>
                
-              <a href="{{ route ('fasilitas.filter',[$idfilter1]) }}" class="small-box-footer"> primer <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route ('fasilitas.filter',[$idfilter1]) }}" class="small-box-footer"> More info Sekunder <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>44</h3>
-
-                <p>By Fasilitas</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-ios-cog"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
+         
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
