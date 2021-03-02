@@ -129,20 +129,37 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
                               <tr>
                                   <th scope="row">Lokasii</th>
                                 <td>
+                                <!-- Desa -->
                                 <?php
-                              $qrdetail = "SELECT DISTINCT * WHERE { indekost:".$iddetail2." indekost:Berlokasi ?s }";
+                              $qrdetail = "SELECT DISTINCT * WHERE { indekost:".$iddetail2." indekost:Berlokasididesa ?s }";
                               $qrkost = $sparql->query($qrdetail);
                               foreach($qrkost as $item){
                                 $lokasi = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->s->getUri());
                                 
                                         ?>
 
-                                <a href="{{ route ('konten.lokasi',[$lokasi]) }}" >{{ $lokasi }}</a>
-                                
                               <?php
                                 }
                                 ?>
+                                <!-- end desa -->
+                                <a href="{{ route ('konten.lokasi',[$lokasi]) }}" >{{ $lokasi }}</a>
+
+                                   <!-- kecamatan -->
+                                   <?php
+                              $qrdetail = "SELECT DISTINCT * WHERE { indekost:".$iddetail2." indekost:Berlokasidikecamatan ?s }";
+                              $qrkost = $sparql->query($qrdetail);
+                              foreach($qrkost as $item){
+                                $lokasikecamatan = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->s->getUri());
                                 
+                                        ?>
+
+                              <?php
+                                }
+                                ?>
+                                <!-- end desa -->
+                                <a href="{{ route ('konten.lokasikecamatan',[$lokasikecamatan]) }}" >{{ $lokasikecamatan }}</a>
+
+                           
                                 </td>
 
                                 <td colspan="2">

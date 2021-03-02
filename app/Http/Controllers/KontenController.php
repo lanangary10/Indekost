@@ -11,6 +11,11 @@ class KontenController extends Controller
         return view('konten/kontenlokasi', ['idlokasi'=>$idlokasi]);
     }
 
+    public function kontenlokasikecamatan($idlokasikecamatan)
+    {
+        return view('konten/kontenlokasikecamatan', ['idlokasikecamatan'=>$idlokasikecamatan]);
+    }
+
     public function kontenfasilitass($idfs)
     {
         return view('konten/kontenfs', ['idfs'=>$idfs]);

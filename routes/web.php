@@ -65,6 +65,7 @@ Route::get('search/lokasi/{lokasi}', 'App\Http\Controllers\IndekostController@sh
 
 // konten
 Route::get('lokasi/{lokasi}', 'App\Http\Controllers\KontenController@kontenlokasi')->name('konten.lokasi');
+Route::get('lokasikecamatan/{lokasikecamatan}', 'App\Http\Controllers\KontenController@kontenlokasikecamatan')->name('konten.lokasikecamatan');
 Route::get('fs/{tersedia}', 'App\Http\Controllers\KontenController@kontenfasilitass')->name('fs.show');
 Route::get('fp/{memiliki}', 'App\Http\Controllers\KontenController@kontenfasilitasp')->name('fp.show');
 Route::get('hdp/{menghadap}', 'App\Http\Controllers\KontenController@kontenmenghadap')->name('hadap.show');

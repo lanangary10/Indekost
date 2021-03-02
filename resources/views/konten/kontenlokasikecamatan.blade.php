@@ -42,7 +42,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
         <?php
         $i=0;
             
-            $filterlokasi = "SELECT * WHERE { ?s indekost:Berlokasididesa indekost:".$idlokasi.". ?s indekost:Foto ?o. ?s indekost:Harga ?p. ?s indekost:Alamat ?q}";
+            $filterlokasi = "SELECT * WHERE { ?s indekost:Berlokasidikecamatan indekost:".$idlokasikecamatan.". ?s indekost:Foto ?o. ?s indekost:Harga ?p. ?s indekost:Alamat ?q}";
             $qrfilter = $sparql->query($filterlokasi);
 
             foreach($qrfilter as $item){
