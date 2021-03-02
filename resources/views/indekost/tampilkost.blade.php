@@ -32,7 +32,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
     <table>
         <?php
         $i=0;
-          $qrdetail = "SELECT * WHERE {?s indekost:Berlokasi indekost:".$iddetail.". ?s indekost:Foto ?o. ?s indekost:Harga ?harga. ?s indekost:Alamat ?alamat}";
+          $qrdetail = "SELECT * WHERE {?s indekost:Berlokasididesa indekost:".$iddetail.". ?s indekost:Foto ?o. ?s indekost:Harga ?harga. ?s indekost:Alamat ?alamat}";
           $qrkost = $sparql->query($qrdetail);
           foreach($qrkost as $item){
             $querydetail = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->s->getUri());
@@ -90,7 +90,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
 
 
     <div class="col-sm">
-      detailkost
+ 
     </div>
   </div>
 </div>

@@ -26,6 +26,7 @@ Route::get('/searching', 'App\Http\Controllers\PagesController@searching');
 //Lokasi
 Route::get('/kabupaten', 'App\Http\Controllers\IndekostController@index')->name('lokasi.kabupaten');
 Route::get('kabupaten/{carikecamatan}', 'App\Http\Controllers\IndekostController@show')->name('lokasi.kecamatan');
+Route::get('desa/{caridesa}', 'App\Http\Controllers\IndekostController@showdesa')->name('lokasi.desa');
 
 
 

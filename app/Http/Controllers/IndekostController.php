@@ -57,6 +57,11 @@ class IndekostController extends Controller
        return view('indekost/kecamatan', ['idkost' =>$id]);
     }
 
+    public function showdesa($iddesa)
+    {
+       return view('indekost/desa', ['iddesa' =>$iddesa]);
+    }
+
       /**
      * Display the specified resource.
      *
