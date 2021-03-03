@@ -18,7 +18,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
 ?>
 @extends('layout/main')
 
-@section('title', 'Konten Lokasi Indekost')
+@section('title', 'Kecamatan Lokasi Indekost')
 
 @section('container')
 
