@@ -8,7 +8,7 @@ class KontenController extends Controller
 {
     public function kontenlokasi($idlokasi)
     {
-        return view('konten/kontenlokasi', ['idlokasi'=>$idlokasi]);
+        return view('konten/kontenlokasidesa', ['idlokasi'=>$idlokasi]);
     }
 
     public function kontenlokasikecamatan($idlokasikecamatan)

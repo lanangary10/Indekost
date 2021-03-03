@@ -62,7 +62,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
            <img src="{{ URL::asset('images/'.$queryfoto) }}" class="card-img-top" alt="..." width="150px" height="200px">
            
              <div class="card-body">
-                <h5 class="card-title"><?php echo $idlokasi ?></h5>       
+                <h5 class="card-title"><?php echo $idtampillokasi ?></h5>       
             </div>
 
             <ul class="list-group list-group-flush">
