@@ -15,11 +15,11 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
 ?>
 @extends('layout/main')
 
-@section('title', 'Kabupaten')
+@section('title', 'Kecamatan')
 
 @section('container')
 
-  <div class="content-wrapper">
+  <div class="content-wrapper  text-white">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -33,21 +33,22 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
         
           <?php
           
-          $lokasi = $sparql->query("SELECT * WHERE {?s indekost:Bagiandari indekost:".$idkost."}");
+          $lokasi = $sparql->query("SELECT * WHERE {?s indekost:Bagiandari indekost:".$idkost.". ?s rdfs:label ?label}");
 
           $i=0;
             foreach($lokasi as $item){
               $caridesa = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->s->getUri());
+              $showlabel = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->label->getValue());
 
               $bd=$i;
               if ($bd % 4 ==0) {
-                $bd="#EEEEEE";
+                $bd="#94618E";
               }elseif ($bd % 4 ==1) {
-                $bd="#E0E0E0";
+                $bd="#94618E";
               }elseif ($bd % 4 ==2) {
-                $bd="#BDBDBD";
+                $bd="#94618E";
               }elseif ($bd % 4 ==3) {
-              $bd="#9E9E9E";
+              $bd="#94618E";
             }
           ?>
           
@@ -57,9 +58,9 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
   <!-- Nampilin BOX dan isinya -->
   <td>
   <div class="col-lg-3 col-6">
-    <div class="small-box   mb-3" style="width: 18rem; background-color: <?php echo $bd ?>;" >
+    <div class="small-box bg-purple   mb-3" style="width: 18rem; background-color: <?php echo $bd ?>;" >
       <div class="card-header text-center">
-        <?php echo $caridesa ?>
+        <?php echo $showlabel ?>
         </div>
       
           <div class="card-body">
@@ -74,11 +75,11 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
           ?>
                 
 
-            <p class="card-text"><?php }  echo "Desa : "; echo $j ?></p>
+            <p class="card-text"><b> <?php }  echo "Desa : "; echo $j ?></b></p>
             <div class="icon">
                  <i class="fas fa-chart-area"></i>
             </div>
-              <a href="{{ route ('lokasi.desa',[$caridesa]) }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route ('lokasi.desa',[$caridesa]) }}" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
        </div>
     </div>

@@ -39,11 +39,11 @@ $lokasi = $sparql->query("SELECT * WHERE {?s rdf:type indekost:Kabupaten}");
 
               $bd=$i;
               if ($bd % 4 ==0) {
-                $bd="#EEEEEE";
+                $bd="purple";
               }elseif ($bd % 4 ==1) {
-                $bd="#E0E0E0";
+                $bd="warning";
               }elseif ($bd % 4 ==2) {
-                $bd="#BDBDBD";
+                $bd="navy";
               }elseif ($bd % 4 ==3) {
               $bd="#9E9E9E";
             }
@@ -55,11 +55,12 @@ $lokasi = $sparql->query("SELECT * WHERE {?s rdf:type indekost:Kabupaten}");
   <!-- Nampilin BOX dan isinya -->
   <td>
   <div class="col-lg-3 col-6">
-    <div class="small-box   mb-3" style="width: 18rem; background-color: <?php echo $bd ?>;" >
+    <div class="small-box   mb-3 bg-purple" style="width: 18rem; background-color: <?php echo $bd ?>;" >
       <div class="card-header text-center">
         <?php echo $carikecamatan ?>
         </div>
       
+        <a href="{{ route ('lokasi.kecamatan',[$carikecamatan]) }}" class="small-box-footer">
           <div class="card-body">
           <!-- query buat tau berapa jumlah kecamatan di kabupatennya -->
           <?php
@@ -76,8 +77,9 @@ $lokasi = $sparql->query("SELECT * WHERE {?s rdf:type indekost:Kabupaten}");
             <div class="icon">
                  <i class="fas fa-chart-area"></i>
             </div>
-              <a href="{{ route ('lokasi.kecamatan',[$carikecamatan]) }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+           
           </div>
+          <i class="fas fa-arrow-circle-right"></i></a>
        </div>
     </div>
   </td>

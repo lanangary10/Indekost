@@ -36,7 +36,7 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white " style="background-color: #dddddd;">
+  <nav class="main-header navbar navbar-expand navbar-white " style="background-color: #F8EEE7;">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -53,7 +53,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-light-primary elevation-4" style="background-color: #D7CCC8;" >
+  <aside class="main-sidebar sidebar-light-primary elevation-4" style="background-color: #F4DECB;" >
   <!-- style="background-image: url('https://ecs7.tokopedia.net/img/cache/700/VqbcmM/2020/9/1/e176b0fa-e8a3-4fc3-8af9-a830e55a3944.jpg');background-blend-mode: soft-light;background-color: rgba(0,0,0,.25);background-size: cover;" -->
     <!-- Brand Logo -->
     

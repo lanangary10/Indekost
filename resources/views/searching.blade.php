@@ -54,7 +54,7 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
                       <option value="kosong">Pilih...</option>
                        <?php
                    
-                       $qrlokasi = "SELECT * WHERE {?lokasi rdf:type indekost:Kecamatan}";
+                       $qrlokasi = "SELECT * WHERE {?lokasi rdf:type indekost:Desa}";
                        $lokasi = $sparql->query($qrlokasi);
 
                        foreach($lokasi as $m){
@@ -93,6 +93,7 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
               <div class="row"> <!-- row 3 -->
              <!-- status -->
              <div class="col-6">
+             <div class="text-nowrap font-weight-bold" style="width: 8rem;">Indekos Status</div>
               <div class="input-group mb-3">
                     <select class="custom-select" id="status" name="status">
                       <option value="kosong">Indekost Khusus...</option>
@@ -113,6 +114,7 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
 
                <!-- Rentang -->
              <div class="col-6">
+             <div class="text-nowrap font-weight-bold" style="width: 8rem;">Rentang Harga indekos</div>
               <div class="input-group mb-3">
                     <select class="custom-select" id="rentang" name="rentang">
                       <option value="kosong">Rentang</option>
@@ -137,11 +139,52 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
 
 
             <div class="row"><!-- row2 -->
-            <!-- Fasilitas Primer-->
+           
+             <!-- Fasilitas sekunder-->
+             <div class="col-2">
+            
+             <div class="text-nowrap font-weight-bold" style="width: 8rem;">Fasilitas Sekunder</div>
+              <div class="form-check form-check-inline">
+                <div class="input-group row">
+
+               
+                       <?php
+                    
+                       $qrfasilitas = "SELECT * WHERE {?fasilitas rdf:type indekost:Sekunder}";
+                       $fasilitas = $sparql->query($qrfasilitas);
+                       $fhit=0;
+                       $fnumber=[];
+                       $cekminusfasilitas=[];
+                      
+                       
+                       foreach($fasilitas as $f){
+                          $listfasilitas = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$f->fasilitas->getUri());
+                          $fnumber[$fhit]=0;
+                          $fhit++;
+                          $cekminusfasilitas[$listfasilitas]['status']=false;
+
+                         
+                           ?> 
+                    
+                           <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="fasilitas[]" type="checkbox" id="fasilitas" value="<?php echo $listfasilitas?>">
+                            <label class="form-check-label" for="inlineCheckbox1"><?php echo $listfasilitas ?></label>
+                          </div>
+                     
+                       
+                       <?php }   ?>
+
+                </div>
+              </div>
+              </div>
+               <!-- end fasilitas sekunder-->
+
+              
+               <!-- Fasilitas Primer-->
              <div class="col-3">
              <div class="text-nowrap font-weight-bold" style="width: 8rem;">Fasilitas Primer</div>
               <div class="form-check form-check-inline">
-                <div class="input-group mb-3">
+                <div class="input-group eow">
 
                
                        <?php
@@ -171,66 +214,19 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
 
                 </div>
               </div>
+              
               </div>
               <!-- end fasilitasprimer-->
 
-
-
-
-
-             <!-- Fasilitas sekunder-->
-             <div class="col-3">
-            
-             <div class="text-nowrap font-weight-bold" style="width: 8rem;">Fasilitas Sekunder</div>
-              <div class="form-check form-check-inline">
-                <div class="input-group mb-3">
-
-               
-                       <?php
-                    
-                       $qrfasilitas = "SELECT * WHERE {?fasilitas rdf:type indekost:Sekunder}";
-                       $fasilitas = $sparql->query($qrfasilitas);
-                       $fhit=0;
-                       $fnumber=[];
-                       $cekminusfasilitas=[];
-                      
-                       
-                       foreach($fasilitas as $f){
-                          $listfasilitas = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$f->fasilitas->getUri());
-                          $fnumber[$fhit]=0;
-                          $fhit++;
-                          $cekminusfasilitas[$listfasilitas]['status']=false;
-
-                         
-                           ?> 
-                    
-                          
-                           <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="fasilitas[]" type="checkbox" id="fasilitas" value="<?php echo $listfasilitas?>">
-                            <label class="form-check-label" for="inlineCheckbox1"><?php echo $listfasilitas ?></label>
-                          </div>
-                       
-                       <?php }   ?>
-
-                </div>
-              </div>
-              </div>
-              <!-- end fasilitas sekunder-->
               </div>  <!-- end row2-->
             
-
-            
-
-        
-
-           
-            <div class="col">
+              <div class="col">
             <input type="submit" name="cari" value="Cari" class="btn btn-primary">
             <input type="submit" name="reset" value="Reset" class="btn btn-danger" onclick="resetPage()">
             </div>
 
             </div>
-          
+
         </form>
 
    
@@ -249,7 +245,7 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
           $querydata = 'SELECT * WHERE { ?indekost rdf:type indekost:Nama_indekost';
          
           if ($_GET['lokasi']!="kosong") {
-            $querydata=$querydata.". ?indekost indekost:Berlokasi indekost:".$_GET['lokasi'];
+            $querydata=$querydata.". ?indekost indekost:Berlokasididesa indekost:".$_GET['lokasi'];
             
           } 
           if ($_GET['status']!="kosong") {

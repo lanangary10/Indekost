@@ -22,7 +22,7 @@
         <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-info">
+            <div class="small-box bg-purple">
               <div class="inner">
                 <h3>Rentang 1</h3>
                 <p>400.000-1.000.000</p>
@@ -41,7 +41,7 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-purple">
               <div class="inner">
                 <h3>Rentang 2<sup style="font-size: 20px"></sup></h3>
 
@@ -60,7 +60,7 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-warning">
+            <div class="small-box bg-purple">
               <div class="inner">
                 <h3>Rentang 3</h3>
 

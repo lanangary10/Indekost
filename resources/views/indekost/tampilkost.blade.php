@@ -32,22 +32,16 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
     <table>
         <?php
         $i=0;
-          $qrdetail = "SELECT * WHERE {?s indekost:Berlokasididesa indekost:".$iddetail.". ?s indekost:Foto ?o. ?s indekost:Harga ?harga. ?s indekost:Alamat ?alamat}";
+          $qrdetail = "SELECT * WHERE {?s indekost:Berlokasididesa indekost:".$iddetail.". ?s indekost:Foto ?o. ?s indekost:Harga ?harga. ?s indekost:Alamat ?alamat. ?s rdfs:label ?label}";
           $qrkost = $sparql->query($qrdetail);
           foreach($qrkost as $item){
             $querydetail = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->s->getUri());
             $queryfoto = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->o->getValue());
             $queryharga = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->harga->getValue());
             $queryalamat = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->alamat->getValue());
+            $showlabel = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->label->getValue());
         ?>
 
-        <!-- <a href="konten/{{$querydetail}}">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title"><?php echo $querydetail ?></h5>
-            </div>
-        </div>
-        </a> -->
 
         <td>
         <div class="col-lg-3 col-6">
@@ -56,7 +50,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
            <img src="{{ URL::asset('images/'.$queryfoto) }}" class="card-img-top" alt="..." width="150px" height="200px">
            
              <div class="card-body">
-                <h5 class="card-title"><?php echo $querydetail ?></h5>       
+                <h5 class="card-title"><h5 style="text-align: center;"><?php echo $showlabel ?></h5></h5>       
             </div>
 
             <ul class="list-group list-group-flush">
@@ -65,7 +59,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
             </ul>
 
             <div class="card-body">
-              <a href="{{ route ('detaillokasi.show',[$querydetail]) }}" class="card-link">Another link</a>
+              <a href="{{ route ('detaillokasi.show',[$querydetail]) }}" class="card-link">More Info  <i class="fas fa-arrow-circle-right"> </i></a>  
             </div>
             
          </div>

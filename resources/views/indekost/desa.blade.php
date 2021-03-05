@@ -40,29 +40,24 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
            
             $bd=$i;
             if ($bd % 3 ==0) {
-              $bd="success";
+              $bd="purple";
             }elseif ($bd % 3 ==1) {
               $bd="warning";
             }elseif ($bd % 3 ==2) {
-              $bd="info";
+              $bd="navy";
             }
         ?>
-        <!-- <a href="detail/{{$caridetailkost}}">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title"><?php echo $caridetailkost ?></h5>
-            </div>
-        </div>
-        </a> -->
+       
 
         <!-- Nampilin BOX dan isinya -->
           <td>
           <div class="col-lg-3 col-6">
             <div class="small-box  bg-<?php echo $bd ?> mb-3" style="width: 18rem;">
               <div class="card-header text-center">
-                <?php echo $caridetailkost ?>
+                <h4><?php echo $caridetailkost ?></h4>
                 </div>
               
+                <a href="{{ route ('pilih.indekost',[$caridetailkost]) }}" class="small-box-footer">
                   <div class="card-body">
                   <!-- query buat tau berapa jumlah kecamatan di kabupatennya -->
                   <?php
@@ -75,12 +70,13 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
                   ?>
                         
 
-                    <p class="card-text"><?php }  echo "Indekost : "; echo $j ?></p>
+                    <p class="card-text"><h5><?php }  echo "Indekost : "; echo $j ?> </h5></p>
                     <div class="icon">
                         <i class="ion ion-ios-home"></i>
                     </div>
-                      <a href="{{ route ('pilih.indekost',[$caridetailkost]) }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                     
                   </div>
+                  <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
           </td>

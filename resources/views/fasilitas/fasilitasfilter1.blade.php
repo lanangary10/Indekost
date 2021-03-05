@@ -22,7 +22,7 @@
         <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-info">
+            <div class="small-box bg-purple">
               <div class="inner">
                 <h3>Primer</h3>
                 <p></p>
@@ -42,7 +42,7 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-purple">
               <div class="inner">
                 <h3>Sekunder<sup style="font-size: 20px"></sup></h3>
 

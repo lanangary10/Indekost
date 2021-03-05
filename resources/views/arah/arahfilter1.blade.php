@@ -87,7 +87,7 @@ $arah = $sparql->query("SELECT * WHERE {?s rdf:type indekost:Arah}");
 
 
  <!-- small box -->
- <div class="small-box " style="width: 18rem; background-color: <?php echo $bd ?>;">
+ <div class="small-box bg-purple" style="width: 18rem; background-color: <?php echo $bd ?>;">
               <div class="inner">
                 <h3> <?php echo $cariarah ?><sup style="font-size: 20px"></sup></h3>
 
