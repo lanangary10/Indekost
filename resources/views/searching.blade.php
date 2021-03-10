@@ -322,7 +322,7 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
     // }
           //  end fasilitas sekunder
             
-           $querydata = $querydata."}";
+           $querydata = $querydata.". ?indekost rdfs:label ?labelkost}";
            $query=$sparql->query($querydata);
           
           $jumlah = 0;
@@ -335,9 +335,10 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
           $iterasikost = 0;
           foreach($query as $item){
             $idkost = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->indekost->getUri());
+            $labelkost = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->labelkost->getValue());
+   
             
-            
-            $arrayuri[$iterasikost] = $idkost;
+            $arrayuri[$iterasikost] = $labelkost;
 
             $iterasikost++;
             

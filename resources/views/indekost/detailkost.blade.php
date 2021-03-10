@@ -96,10 +96,12 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
                 <div class="card-header text-center">Foto Indekost</div>
                   <div class="card-body " >
                       <?php
-                                $qrdetail = "SELECT DISTINCT * WHERE { indekost:".$iddetail2." indekost:Foto ?o }";
+                                $qrdetail = "SELECT DISTINCT * WHERE { indekost:".$iddetail2." indekost:Foto ?o. indekost:".$iddetail2." rdfs:label ?label }";
                                 $qrkost = $sparql->query($qrdetail);
                                 foreach($qrkost as $item){
                                   $queryfoto = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->o->getValue());
+                                  $showlabel = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->label->getValue());
+   
                                           
                             ?>
 
@@ -121,7 +123,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
                             <thead>
                               <tr>
                                 <th scope="col">Properti</th>
-                                <th scope="col">{{ $iddetail2 }}</th>
+                                <th scope="col">{{ $showlabel }}</th>
                                 <th colspan="3">Harga</th>
                               </tr>
                             </thead>
@@ -146,10 +148,12 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
 
                                    <!-- kecamatan -->
                                    <?php
-                              $qrdetail = "SELECT DISTINCT * WHERE { indekost:".$iddetail2." indekost:Berlokasidikecamatan ?s }";
+                              $qrdetail = "SELECT DISTINCT * WHERE { indekost:".$iddetail2." indekost:Berlokasidikecamatan ?s. ?s rdfs:label ?labelkecamatan }";
                               $qrkost = $sparql->query($qrdetail);
                               foreach($qrkost as $item){
                                 $lokasikecamatan = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->s->getUri());
+                                $showlabelkecamatan = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->labelkecamatan->getValue());
+   
                                 
                                         ?>
 
@@ -157,7 +161,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
                                 }
                                 ?>
                                 <!-- end desa -->
-                                <a href="{{ route ('konten.lokasikecamatan',[$lokasikecamatan]) }}" >{{ $lokasikecamatan }}</a>
+                                <a href="{{ route ('konten.lokasikecamatan',[$lokasikecamatan]) }}" >{{ $showlabelkecamatan }}</a>
 
                            
                                 </td>

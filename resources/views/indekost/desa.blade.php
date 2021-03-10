@@ -33,11 +33,12 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
     <table>
         <?php
         $i=0;
-          $desaquery = "SELECT * WHERE {?s indekost:Bagiandari indekost:".$iddesa."}";
+          $desaquery = "SELECT * WHERE {?s indekost:Bagiandari indekost:".$iddesa.". indekost:".$iddesa." rdfs:label ?label }";
           $desa = $sparql->query($desaquery);
           foreach($desa as $item){
             $caridetailkost = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->s->getUri());
-           
+            $showlabel = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->label->getValue());
+   
             $bd=$i;
             if ($bd % 3 ==0) {
               $bd="purple";
