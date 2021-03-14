@@ -45,7 +45,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
      
         
 
-            $filterstatus = "SELECT * WHERE { ?s indekost:Khusus indekost:".$idfilterstatus.". ?s indekost:Foto ?o. ?s indekost:Harga ?p. ?s indekost:Alamat ?q}";
+            $filterstatus = "SELECT * WHERE { ?s indekost:Khusus indekost:".$idfilterstatus.". ?s indekost:Foto ?o. ?s indekost:Harga ?p. ?s indekost:Alamat ?q. ?s rdfs:label ?label}";
             $qrfilter = $sparql->query($filterstatus);
 
             foreach($qrfilter as $item){
@@ -53,6 +53,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
             $queryfoto = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->o->getValue());
             $querytampilharga = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->p->getValue());
             $querytampilalamat = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->q->getValue());
+            $showlabel = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->label->getValue());
 
         ?>
        
@@ -75,7 +76,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
            <img src="{{ URL::asset('images/'.$queryfoto) }}" class="card-img-top" alt="..." width="150px" height="200px">
            
              <div class="card-body">
-                <h5 class="card-title"><?php echo $tampilfilterstatus ?></h5>       
+                <h5 class="card-title"><?php echo $showlabel ?></h5>       
             </div>
 
             <ul class="list-group list-group-flush">

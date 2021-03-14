@@ -54,13 +54,15 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
                       <option value="kosong">Pilih...</option>
                        <?php
                    
-                       $qrlokasi = "SELECT * WHERE {?lokasi rdf:type indekost:Desa}";
+                       $qrlokasi = "SELECT * WHERE {?lokasi rdf:type indekost:Desa. ?lokasi rdfs:label ?label}";
                        $lokasi = $sparql->query($qrlokasi);
 
                        foreach($lokasi as $m){
                            $namalokasi = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$m->lokasi->getUri());
-                       ?>
-                       <option value="<?php echo $namalokasi ?>">{{ $namalokasi }}</option>
+                           $showlabel = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$m->label->getValue());
+
+                      ?>
+                       <option value="<?php echo $namalokasi ?>">{{ $showlabel }}</option>
                        <?php }?>
                   </select>
               </div>
@@ -150,7 +152,7 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
                
                        <?php
                     
-                       $qrfasilitas = "SELECT * WHERE {?fasilitas rdf:type indekost:Sekunder}";
+                       $qrfasilitas = "SELECT * WHERE {?fasilitas rdf:type indekost:Sekunder. ?fasilitas rdfs:label ?labelsekunder}";
                        $fasilitas = $sparql->query($qrfasilitas);
                        $fhit=0;
                        $fnumber=[];
@@ -159,6 +161,8 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
                        
                        foreach($fasilitas as $f){
                           $listfasilitas = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$f->fasilitas->getUri());
+                          $showlabelsekunder = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$f->labelsekunder->getValue());
+
                           $fnumber[$fhit]=0;
                           $fhit++;
                           $cekminusfasilitas[$listfasilitas]['status']=false;
@@ -168,7 +172,7 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
                     
                            <div class="form-check form-check-inline">
                             <input class="form-check-input" name="fasilitas[]" type="checkbox" id="fasilitas" value="<?php echo $listfasilitas?>">
-                            <label class="form-check-label" for="inlineCheckbox1"><?php echo $listfasilitas ?></label>
+                            <label class="form-check-label" for="inlineCheckbox1"><?php echo $showlabelsekunder ?></label>
                           </div>
                      
                        
@@ -189,7 +193,7 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
                
                        <?php
                     
-                       $qrfasilitasprimer = "SELECT * WHERE {?fasilitasprimer rdf:type indekost:Primer}";
+                       $qrfasilitasprimer = "SELECT * WHERE {?fasilitasprimer rdf:type indekost:Primer. ?fasilitasprimer rdfs:label ?labelprimer}";
                        $fasilitasprimer = $sparql->query($qrfasilitasprimer);
                        $fhitprimer=0;
                        $fnumberprimer=[];
@@ -197,7 +201,9 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
 
                        foreach($fasilitasprimer as $f){
                            $listfasilitasprimer = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$f->fasilitasprimer->getUri());
-                          $fnumberprimer[$fhitprimer]=0;
+                           $showlabelprimer = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$f->labelprimer->getValue());
+
+                           $fnumberprimer[$fhitprimer]=0;
                           $fhitprimer++;
                           $cekminusfasilitasprimer[$listfasilitasprimer]['status']=false;
 
@@ -207,7 +213,7 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
                           
                            <div class="form-check form-check-inline">
                             <input class="form-check-input" name="fasilitasprimer[]" type="checkbox" id="fasilitasprimer" value="<?php echo $listfasilitasprimer?>">
-                            <label class="form-check-label" for="inlineCheckbox1"><?php echo $listfasilitasprimer ?></label>
+                            <label class="form-check-label" for="inlineCheckbox1"><?php echo $showlabelprimer ?></label>
                           </div>
                        
                        <?php }   ?>
@@ -332,13 +338,16 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
           }
           
           $arrayuri = array();
+          $arraylabel = array();
+
           $iterasikost = 0;
           foreach($query as $item){
             $idkost = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->indekost->getUri());
             $labelkost = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->labelkost->getValue());
    
             
-            $arrayuri[$iterasikost] = $labelkost;
+            $arrayuri[$iterasikost] = $idkost;
+            $arraylabel[$iterasikost] = $labelkost;
 
             $iterasikost++;
             
@@ -361,6 +370,7 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
               <?php
               $iteration = 0;
               if($jumlah > 0){
+                
                 for($indekost = 1; $indekost <= $jumlah; $indekost++){
                   if($indekost < $jumlah){
                     if($arrayuri[$indekost - 1] != $arrayuri[$indekost]){
@@ -369,14 +379,14 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
               ?>
               <tr>
                 <th scope="row">{{ $iteration }}</th>
-                <td><a href="{{ route ('detaillokasi.show',[$id]) }}" class="text-decoration-none text-muted"><?php echo $arrayuri[$indekost - 1]; ?></a></td>
+                <td><a href="{{ route ('detaillokasi.show',[$id]) }}" class="text-decoration-none text-muted"><?php echo $arraylabel[$indekost - 1]; ?></a></td>
               </tr>
               <?php
                     }
                   } else { $iteration = $iteration + 1; $id = $arrayuri[$indekost - 1]; ?>
               <tr>
                 <th scope="row">{{ $iteration }}</th>
-                <td><a href="{{ route ('detaillokasi.show',[$id]) }}" class="text-decoration-none text-muted"><?php echo $arrayuri[$indekost - 1]; ?></a></td>
+                <td><a href="{{ route ('detaillokasi.show',[$id]) }}" class="text-decoration-none text-muted"><?php echo $arraylabel[$indekost - 1]; ?></a></td>
               </tr>
               <?php
                   }
