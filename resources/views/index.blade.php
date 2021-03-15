@@ -22,26 +22,7 @@
 <!-- end jumbo tron -->
 
 
-      <!-- <div class="card bg-dark text-white">
-      <a href="#">
-        <img
-          src="https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2015/10/Blog_Buat-Anak-Kos-Barang-Ini-Wajib-Ada-di-Kamar-Kos-Kamu.jpg"
-          class="card-img"
-          alt="indekost"
-          
-        />
-        </a>
-      <div class="card-img">
-        <h1 class="card-title">Semantic Web Indekost Ontology</h1>
-        <h3 class="card-text">
-          I Gusti Lanang Ary Kresnawan-
-          1708561031-
-          Management Pengetahuan
-        </h3>
-        <p class="card-text">Go somewhere</p>
-      </div>
-    </div> -->
-   
+      
 
   <ul class="nav nav-tabs" id="myTab" role="tablist" style="text-align: center;">
   <li class="nav-item" role="presentation">
@@ -61,7 +42,7 @@
 <!-- card1 -->
 <div class="row">
 <div class="col-4">
-<a href="https://forms.gle/cE4f7snKMo5cEYtW6" class="nav-link link-dark">
+<a href="https://forms.gle/8NTjhyoi6p8rMKhG9" class="nav-link link-dark">
 <div class="card">
         <img src="https://png.pngtree.com/element_our/20200702/ourlarge/pngtree-simple-questionnaire-vector-icon-free-drawing-image_2291780.jpg" class="card-img-top rounded mx-auto d-block" alt="..." style="height: 280px;">
         <div class="card-body">
