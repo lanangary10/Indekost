@@ -12,13 +12,10 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
 
 
 
-
-
-
 ?>
 @extends('layout/main')
 
-@section('title', 'Nama Indekost')
+@section('title', 'konten harga Indekost')
 
 @section('container')
 
@@ -42,28 +39,24 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
         <?php
         $i=0;
 
+     
+        
+            $filterrentang = "SELECT * WHERE { ?s rdf:type indekost:Nama_indekost. ?s indekost:Rentang ".$idharga.". ?s indekost:Foto ?o. ?s indekost:Harga ?p. ?s indekost:Alamat ?q. ?s rdfs:label ?label }";
+           
+            $qrfilter = $sparql->query($filterrentang);
 
-        if($idfilter1=='primer'){
-          $filterprimer = "SELECT * WHERE { ?s indekost:Memiliki indekost:Kamar_mandi_dalam. ?s indekost:Foto ?o. ?s indekost:Harga ?p. ?s indekost:Foto ?o. ?s indekost:Alamat ?q. MINUS {?s indekost:Tersedia indekost:Ac}. MINUS {?s indekost:Tersedia indekost:Meja}. MINUS {?s indekost:Tersedia indekost:Almari}. MINUS {?s indekost:Tersedia indekost:Wifi}. MINUS {?s indekost:Tersedia indekost:Laundry}. MINUS {?s indekost:Tersedia indekost:Cleaning_service}. ?s rdfs:label ?label }"; // MINUS {?s indekost:Tersedia indekost:Ac}
-          $qrfilter = $sparql->query($filterprimer);
-          $tambah0='00';
-          
-        }else{
-          $filtersekunder = "SELECT * WHERE { ?s indekost:Tersedia indekost:Ac.?s indekost:Foto ?o. ?s indekost:Harga ?p. ?s indekost:Alamat ?q. ?s rdfs:label ?label}";
-          $qrfilter = $sparql->query($filtersekunder);
-          $tambah0='';
-        }
-
-            
             foreach($qrfilter as $item){
-            $tampilfilterprimer = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->s->getUri());
+            $tampilfilterrentang = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->s->getUri());
             $queryfoto = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->o->getValue());
             $querytampilharga = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->p->getValue());
             $querytampilalamat = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->q->getValue());
             $showlabel = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->label->getValue());
 
-
-            
+            if ($idharga==1) {
+                $tambah0='00';
+              }else {
+                $tambah0='';
+              }
         ?>
        
 
@@ -76,7 +69,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
            <img src="{{ URL::asset('images/'.$queryfoto) }}" class="card-img-top" alt="..." width="150px" height="200px">
            
              <div class="card-body">
-                <h5 class="card-title"><?php echo $showlabel ?></h5>       
+                <h5 class="card-title"><?php echo $showlabel?></h5>       
             </div>
 
             <ul class="list-group list-group-flush">
@@ -86,7 +79,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
             </ul>
 
             <div class="card-body">
-                 <a href="{{ route ('detaillokasi.show',[$tampilfilterprimer]) }}" class="card-link">Detail Indekost--> </a>
+                 <a href="{{ route ('detaillokasi.show',[$tampilfilterrentang]) }}" class="card-link">Detail Indekost--> </a>
             </div>
             
          </div>

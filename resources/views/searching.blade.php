@@ -141,9 +141,10 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
 
 
             <div class="row"><!-- row2 -->
+       
            
              <!-- Fasilitas sekunder-->
-             <div class="col-2">
+             <div class="col-3">
             
              <div class="text-nowrap font-weight-bold" style="width: 8rem;">Fasilitas Sekunder</div>
               <div class="form-check form-check-inline">
@@ -235,7 +236,21 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
 
         </form>
 
-   
+  <!-- alert -->
+    <div class="row">
+      <div class="col-8"></div>
+      
+        <div class="col">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>Searching<br></strong>"Jika User tidak memilih inputan kriteria lalu mengklik tombol cari!, maka sistem akan menampilkan seluruh instance Nama indekos yang ada pada sistem".
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+
+      </div>
+    </div>
+  <!-- end alert -->
 
         <?php
         if (isset($_GET['cari']))
@@ -360,7 +375,7 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
 <div class="container-fluid">
           <div class="text-nowrap font-weight-bold mt-3"><h2>Hasil</h2></div>
           <table class="table mt-3">
-            <thead>
+            <thead">
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nama Kost</th>

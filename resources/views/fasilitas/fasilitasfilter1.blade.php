@@ -1,6 +1,6 @@
 @extends('layout/main')
 
-@section('title', 'Browsing')
+@section('title', 'Fasilitas')
 
 @section('container')
 <div class="content-wrapper">
@@ -8,9 +8,9 @@
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
+          <!-- <div class="col-sm-6">
             <h1 class="m-0 text-dark">Browsing</h1>
-          </div><!-- /.col -->
+          </div>/.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -62,6 +62,22 @@
          
         </div>
         <!-- /.row -->
+         <!-- alert -->
+  <div class="row">
+  <div class="col-8"></div>
+  
+   <div class="col">
+
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+     <strong>INFO<br></strong>"Untuk melihat anggota masing-masing fasilitas bisa klik Tombol <h7 class="text-black"> <a href="/" class="text-danger">More info! </a></h7>.
+       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+     <span aria-hidden="true">&times;</span>
+   </button>
+  </div>
+  
+  </div>
+  </div>
+  <!-- end alert -->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->

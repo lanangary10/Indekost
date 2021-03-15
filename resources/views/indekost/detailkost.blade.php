@@ -34,66 +34,11 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
                   <!-- tampilnya  -->
 
 
-               
-
-      <!-- <div class="row">
-
-      <?php
-            $qreq = "SELECT DISTINCT * WHERE { indekost:".$iddetail2." indekost:Foto ?eq }";
-            $qrekost = $sparql->query($qreq);
-            foreach($qrekost as $item){
-              $queryfotoreq = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->eq->getValue());
-                      
-        ?>
-
-      <?php
-      }
-      ?>
-
-      <div class="col">
-      <div class="card mb-3" >
-                  
-    
-                    <div class="col-md-4">
-                      <img src="{{ URL::asset('images/'.$queryfotoreq) }}" alt="..." style="max-width: 100px;">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                      </div>
-                    </div>
-                 
-                </div>
-                </div>
-
-      <div class="col">
-                <div class="card mb-3" >
-                  
-                    <div class="col-md-4">
-                      <img src="..." alt="...">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                      </div>
-                    </div>
-                 
-                </div>
-                </div>
-
-                
-
-      </div> -->
-
        <div class="row">
 
           <div class="col-lg-4" >
-            <div class="card mb-3 border-info">
-                <div class="card-header text-center">Foto Indekost</div>
+            <div class="card mb-3 border-warning" style="width:auto;">
+                <div class="card-header text-center" style="background-color:  #F8EEE7;"><b>Foto Indekost</b></div>
                   <div class="card-body " >
                       <?php
                                 $qrdetail = "SELECT DISTINCT * WHERE { indekost:".$iddetail2." indekost:Foto ?o. indekost:".$iddetail2." rdfs:label ?label }";
@@ -109,17 +54,18 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
                           }
                           ?>
                   <div class="text-center">
-                    <img src="{{ URL::asset('images/'.$queryfoto) }}" alt="{{ URL::asset('images/'.$queryfoto) }}" width="290px" height="290px" class="rounded">
+                    <img src="{{ URL::asset('images/'.$queryfoto) }}" alt="{{ URL::asset('images/'.$queryfoto) }}" width="320px" height="290px" class="rounded">
                   </div>
                 </div>
             </div>
        </div>
        
-
+                    
                     <div class="col">
-                      <div class="card mb-3" style="max-width: auto;">
-                        <div class="card-body">                
-                          <table class="table table-bordered border-info">
+                    <div class="card mb-3 border-warning" style="max-width: auto;">
+                      <div class="card-header text-center card-border border-warning" style="background-color:  #F8EEE7;"> <b>Detail Instance</b></div>
+                         <div class="card-body">                
+                          <table class="table table-bordered border-warning">
                             <thead>
                               <tr>
                                 <th scope="col">Properti</th>
@@ -169,13 +115,20 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
                                 <td colspan="2">
 
                                     <?php
-                                      $qrdetail = "SELECT DISTINCT * WHERE { indekost:".$iddetail2." indekost:Harga ?s }";
+                                      $qrdetail = "SELECT DISTINCT * WHERE { indekost:".$iddetail2." indekost:Harga ?s. indekost:".$iddetail2." indekost:Rentang ?r}";
                                       $qrkost = $sparql->query($qrdetail);
                                       foreach($qrkost as $item){
                                         $harga = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->s->getvalue());
+                                        $rentang = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->r->getvalue());
+                                        
+                                        if ($rentang==1) {
+                                          $tambah0='00';
+                                        }else {
+                                          $tambah0='';
+                                        }
                                     ?>
-    
-                                      <a href="#" >Rp.{{ $harga }}</a>
+                                    
+                                      <a href="{{ route ('harga.show',[$rentang]) }}" >Rp.{{ $harga }}{{ $tambah0 }}</a>
                                       
                                     <?php
                                       }
@@ -387,10 +340,24 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
                       
                    
                       </div>
+                      </div>
                   
                   
                 </div>
+                </div> 
+                <!-- end row -->
+                <!-- alert -->
+                <div class="row">             
+                  <div class="col">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                      <strong>Browsing<br></strong>"Dengan Cara mengklik salah satu hyperlink yang ada pada Detail Instance maka anda bisa menjelajahi indekos yang memiliki kriteria yang sama dengan hyperlink tersebut".
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                  </div>
                 </div>
+                <!-- end alert -->
                 </div>
               
   

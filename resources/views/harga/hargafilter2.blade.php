@@ -52,6 +52,11 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
             $querytampilalamat = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->q->getValue());
             $showlabel = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->label->getValue());
 
+            if ($idfilterharga==1) {
+              $tambah0='00';
+            }else {
+              $tambah0='';
+            }
         ?>
        
 
@@ -68,7 +73,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
             </div>
 
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Harga : Rp <?php echo $querytampilharga ?> </li>
+              <li class="list-group-item">Harga : Rp <?php echo $querytampilharga ?>{{ $tambah0 }} </li>
               <!-- yang buat kata jadi .... span text-truncate -->
               <li class="list-group-item"> <span class="d-inline-block text-truncate" style="max-width: 250px;"><?php echo $querytampilalamat ?> </span> </li>
             </ul>

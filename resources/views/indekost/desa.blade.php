@@ -33,7 +33,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
     <table>
         <?php
         $i=0;
-          $desaquery = "SELECT * WHERE {?s indekost:Bagiandari indekost:".$iddesa.". indekost:".$iddesa." rdfs:label ?label }";
+          $desaquery = "SELECT * WHERE {?s indekost:Bagiandari indekost:".$iddesa.". ?s rdfs:label ?label }";
           $desa = $sparql->query($desaquery);
           foreach($desa as $item){
             $caridetailkost = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->s->getUri());
@@ -55,7 +55,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
           <div class="col-lg-3 col-6">
             <div class="small-box  bg-<?php echo $bd ?> mb-3" style="width: 18rem;">
               <div class="card-header text-center">
-                <h4><?php echo $caridetailkost ?></h4>
+                <h4><?php echo $showlabel ?></h4>
                 </div>
               
                 <a href="{{ route ('pilih.indekost',[$caridetailkost]) }}" class="small-box-footer">

@@ -15,7 +15,7 @@ $arah = $sparql->query("SELECT * WHERE {?s rdf:type indekost:Arah}");
 ?>
 @extends('layout/main')
 
-@section('title', 'Kabupaten')
+@section('title', 'Arah')
 
 @section('container')
 

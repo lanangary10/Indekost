@@ -35,5 +35,10 @@ class KontenController extends Controller
     {
         return view('konten/kontenstatus', ['idstatus'=>$idstatus]);
     }
+
+    public function kontenharga($idharga)
+    {
+        return view('konten/kontenharga', ['idharga'=>$idharga]);
+    }
   
 }

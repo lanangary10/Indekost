@@ -51,6 +51,9 @@
     </ul>
   </nav>
   <!-- /.navbar -->
+  
+
+
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-light-primary elevation-4" style="background-color: #F4DECB;" >
@@ -129,13 +132,30 @@
               </p>
             </a>
           </li>
+          <li class="nav-item has-treeview menu-open">
+            <a href="https://giri.balidigitalheritage.com/" class="nav-link">
+              <i class="nav-icon fas fa-motorcycle"></i>
+              <p>
+                Sepeda Motor
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
       
+
+    
+
     </div>
     <!-- /.sidebar -->
+
+  <!-- footer -->
+  
+
   </aside>
+
+  
 
   @yield('container')
 
@@ -182,5 +202,12 @@
 <script src="{{ URL::asset('adminlte/dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ URL::asset('adminlte/dist/js/demo.js') }}"></script>
+<script>
+window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+    });
+}, 5000);
+</script>
 </body>
 </html>

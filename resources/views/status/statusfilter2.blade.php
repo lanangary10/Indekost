@@ -45,7 +45,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
      
         
 
-            $filterstatus = "SELECT * WHERE { ?s indekost:Khusus indekost:".$idfilterstatus.". ?s indekost:Foto ?o. ?s indekost:Harga ?p. ?s indekost:Alamat ?q. ?s rdfs:label ?label}";
+            $filterstatus = "SELECT * WHERE { ?s indekost:Khusus indekost:".$idfilterstatus.". ?s indekost:Foto ?o. ?s indekost:Harga ?p. ?s indekost:Alamat ?q. ?s indekost:Rentang ?rentang. ?s rdfs:label ?label}";
             $qrfilter = $sparql->query($filterstatus);
 
             foreach($qrfilter as $item){
@@ -54,21 +54,17 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
             $querytampilharga = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->p->getValue());
             $querytampilalamat = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->q->getValue());
             $showlabel = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->label->getValue());
+            $showrentang = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$item->rentang->getValue());
 
+            if ($showrentang==1) {
+              $tambah0='00';
+            }else {
+              $tambah0='';
+            }
         ?>
        
 
-        
-     
-            <!-- <td>
-              <a href="indekost/{{$tampilfilterstatus}}">
-              <div class="card" style="width: 18rem;">
-                  <div class="card-body">
-                      <h5 class="card-title"><?php echo $tampilfilterstatus ?></h5>
-                  </div>
-              </div>
-              </a>
-              </td> -->
+      
         <td>
         <div class="col-lg-3 col-6">
          <div class="card" style="width: 18rem;">
@@ -80,7 +76,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
             </div>
 
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Harga : Rp <?php echo $querytampilharga ?> </li>
+              <li class="list-group-item">Harga : Rp <?php echo $querytampilharga ?>{{ $tambah0 }} </li>
               <!-- yang buat kata jadi .... span text-truncate -->
               <li class="list-group-item"> <span class="d-inline-block text-truncate" style="max-width: 250px;"><?php echo $querytampilalamat ?> </span> </li>
             </ul>
