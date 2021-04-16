@@ -8,7 +8,7 @@ RdfNamespace::set('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#');
 RdfNamespace::set('rdfs', 'http://www.w3.org/2000/01/rdf-schema#');
 RdfNamespace::set('owl', 'http://www.w3.org/2002/07/owl#');
 RdfNamespace::set('indekost', 'http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#');
-$sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekost/query');
+$sparql = new Client('http://127.0.0.1:3030/Ontolgyindekos/query');
 
 
 $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:Ac. ?s indekost:Tersedia indekost:Wifi. ?s indekost:Tersedia indekost:Laundry }");
@@ -54,7 +54,7 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
                       <option value="kosong">Pilih...</option>
                        <?php
                    
-                       $qrlokasi = "SELECT * WHERE {?lokasi rdf:type indekost:Desa. ?lokasi rdfs:label ?label}";
+                       $qrlokasi = "SELECT * WHERE {?lokasi rdf:type indekost:Desa. ?lokasi rdfs:label ?label} ORDER BY ASC(?indekost)";
                        $lokasi = $sparql->query($qrlokasi);
 
                        foreach($lokasi as $m){
@@ -77,7 +77,7 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
                       <option value="kosong">Indekost menghadap...</option>
                        <?php
                    
-                       $qrarah = "SELECT * WHERE {?hdp rdf:type indekost:Arah}";
+                       $qrarah = "SELECT * WHERE {?hdp rdf:type indekost:Arah} ORDER BY ASC(?indekost)";
                        $hdp = $sparql->query($qrarah);
 
                        foreach($hdp as $st){
@@ -101,7 +101,7 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
                       <option value="kosong">Indekost Khusus...</option>
                        <?php
                    
-                       $qrstatus = "SELECT * WHERE {?stat rdf:type indekost:Status}";
+                       $qrstatus = "SELECT * WHERE {?stat rdf:type indekost:Status} ORDER BY ASC(?indekost)";
                        $stat = $sparql->query($qrstatus);
 
                        foreach($stat as $st){
@@ -153,7 +153,7 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
                
                        <?php
                     
-                       $qrfasilitas = "SELECT * WHERE {?fasilitas rdf:type indekost:Sekunder. ?fasilitas rdfs:label ?labelsekunder}";
+                       $qrfasilitas = "SELECT * WHERE {?fasilitas rdf:type indekost:Sekunder. ?fasilitas rdfs:label ?labelsekunder} ORDER BY ASC(?indekost)";
                        $fasilitas = $sparql->query($qrfasilitas);
                        $fhit=0;
                        $fnumber=[];
@@ -204,7 +204,7 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
                            $listfasilitasprimer = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$f->fasilitasprimer->getUri());
                            $showlabelprimer = str_replace('http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#','',$f->labelprimer->getValue());
 
-                           $fnumberprimer[$fhitprimer]=0;
+                          $fnumberprimer[$fhitprimer]=0;
                           $fhitprimer++;
                           $cekminusfasilitasprimer[$listfasilitasprimer]['status']=false;
 
@@ -236,20 +236,7 @@ $primersekunder = $sparql->query("SELECT * WHERE {?s indekost:Tersedia indekost:
 
         </form>
 
-  <!-- alert -->
-    <div class="row">
-      <div class="col-8"></div>
-      
-        <div class="col">
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          <strong>Searching<br></strong>"Jika User tidak memilih inputan kriteria lalu mengklik tombol cari!, maka sistem akan menampilkan seluruh instance Nama indekos yang ada pada sistem".
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-
-      </div>
-    </div>
+ 
   <!-- end alert -->
 
         <?php

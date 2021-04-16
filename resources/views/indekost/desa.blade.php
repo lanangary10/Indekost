@@ -8,7 +8,7 @@ RdfNamespace::set('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#');
 RdfNamespace::set('rdfs', 'http://www.w3.org/2000/01/rdf-schema#');
 RdfNamespace::set('owl', 'http://www.w3.org/2002/07/owl#');
 RdfNamespace::set('indekost', 'http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#');
-$sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekost/query');
+$sparql = new Client('http://127.0.0.1:3030/Ontolgyindekos/query');
 
 
 
@@ -32,6 +32,7 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
     <section class="content">
     <table>
         <?php
+        
         $i=0;
           $desaquery = "SELECT * WHERE {?s indekost:Bagiandari indekost:".$iddesa.". ?s rdfs:label ?label }";
           $desa = $sparql->query($desaquery);
@@ -43,10 +44,11 @@ $sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekos
             if ($bd % 3 ==0) {
               $bd="purple";
             }elseif ($bd % 3 ==1) {
-              $bd="warning";
+              $bd="purple";
             }elseif ($bd % 3 ==2) {
-              $bd="navy";
+              $bd="purple";
             }
+            
         ?>
        
 

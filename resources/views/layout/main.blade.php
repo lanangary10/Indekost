@@ -132,14 +132,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview menu-open">
-            <a href="https://giri.balidigitalheritage.com/" class="nav-link">
-              <i class="nav-icon fas fa-motorcycle"></i>
-              <p>
-                Sepeda Motor
-              </p>
-            </a>
-          </li>
+      
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

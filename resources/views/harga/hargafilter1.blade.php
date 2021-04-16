@@ -25,7 +25,7 @@
             <div class="small-box bg-purple">
               <div class="inner">
                 <h3>Rentang 1</h3>
-                <p>400.000-1.000.000</p>
+                <p>0-999.999</p>
               </div>
               <div class="icon">
                 <i class="ion ion-android-home"></i>
@@ -45,7 +45,7 @@
               <div class="inner">
                 <h3>Rentang 2<sup style="font-size: 20px"></sup></h3>
 
-                <p>1.000.001 - 1.500.000</p>
+                <p>1.000.000 - 1.500.000</p>
               </div>
               <div class="icon">
                 <i class="ion ion-briefcase"></i>

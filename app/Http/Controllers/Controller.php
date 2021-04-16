@@ -22,6 +22,6 @@ class Controller extends BaseController
         RdfNamespace::set('owl', 'http://www.w3.org/2002/07/owl#');
         RdfNamespace::set('indekost', 'http://www.semanticweb.org/msi/ontologies/2021/0/ta-ontology-23#');
         
-        $this->sparql = new Client('https://jena.balidigitalheritage.com/fuseki/Ontolgyindekost/query');
+        $this->sparql = new Client('http://127.0.0.1:3030/Ontolgyindekos/query');
     }
 }
